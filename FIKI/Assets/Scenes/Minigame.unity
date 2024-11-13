@@ -36292,7 +36292,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1282108552
+--- !u!1 &1056211979
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36300,43 +36300,100 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1282108554}
-  - component: {fileID: 1282108553}
-  m_Layer: 0
-  m_Name: BirdSpawn
+  - component: {fileID: 1056211981}
+  - component: {fileID: 1056211980}
+  - component: {fileID: 1056211982}
+  m_Layer: 3
+  m_Name: Limitmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1282108553
-MonoBehaviour:
+--- !u!68 &1056211980
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282108552}
+  m_GameObject: {fileID: 1056211979}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78b7461eaa3ab34fbc57db504c5412e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  birdPrefab: {fileID: 382609056569305186, guid: 77f9e589365c0534c93183c0c8b5591f, type: 3}
-  player: {fileID: 1328086940}
-  spawnInterval: 3
-  speed: 5
-  diveDuration: 1
-  pushDistance: 1
---- !u!4 &1282108554
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -11.389407, y: 5.4853354}
+  - {x: -11.3834305, y: -2.2764478}
+  - {x: -11.377615, y: -2.3130264}
+  - {x: 1.6728516, y: -2.2924724}
+  - {x: 1.6922956, y: -5.433532}
+  - {x: 5.667424, y: -5.4439716}
+  - {x: 5.6487594, y: -12.604912}
+  - {x: 11.532691, y: -12.576213}
+  - {x: 11.5954275, y: -5.491788}
+  - {x: 15.416967, y: -5.488558}
+  - {x: 15.420786, y: -2.2941484}
+  - {x: 28.545261, y: -2.2799397}
+  - {x: 28.561895, y: 30.638657}
+  - {x: 42.598133, y: 30.686916}
+  - {x: 42.610706, y: 32.645092}
+  - {x: 28.580658, y: 32.67287}
+  - {x: 28.595865, y: 61.66775}
+  - {x: 42.616367, y: 61.707577}
+  - {x: 42.608673, y: 63.67059}
+  - {x: 28.614046, y: 63.66328}
+  - {x: 28.533175, y: 68.773575}
+  - {x: 9.582888, y: 68.68688}
+  - {x: 9.619344, y: 77.6964}
+  - {x: 7.6262736, y: 77.710785}
+  - {x: 7.598156, y: 68.74387}
+  - {x: -19.412992, y: 68.685776}
+  - {x: -19.384434, y: 75.72224}
+  - {x: -21.370302, y: 75.706894}
+  - {x: -21.348377, y: 66.70411}
+  - {x: -11.395618, y: 66.77779}
+  - {x: -11.361605, y: 56.77341}
+  - {x: -39.40481, y: 56.691967}
+  - {x: -39.349983, y: 54.689285}
+  - {x: -11.400433, y: 54.788704}
+  - {x: -11.435566, y: 4.095084}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!4 &1056211981
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282108552}
+  m_GameObject: {fileID: 1056211979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 992.6287, y: 1130.9429, z: -12.430269}
+  m_LocalPosition: {x: -8.621014, y: 8.3, z: 2342.6938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36382,7 +36439,7 @@ GameObject:
   - component: {fileID: 1328086938}
   - component: {fileID: 1328086941}
   - component: {fileID: 1328086942}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -36592,78 +36649,6 @@ Transform:
   - {fileID: 657272245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1328086941
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328086937}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.66, y: 0.66}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.66}
-  m_EdgeRadius: 0
---- !u!50 &1328086942
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328086937}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &1414462922
 GameObject:
   m_ObjectHideFlags: 0
@@ -38117,4 +38102,5 @@ SceneRoots:
   - {fileID: 96699278}
   - {fileID: 1560785224}
   - {fileID: 1328086940}
-  - {fileID: 1282108554}
+  - {fileID: 1365700497}
+  - {fileID: 1056211981}
