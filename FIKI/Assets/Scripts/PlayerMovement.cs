@@ -1,7 +1,7 @@
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveDistance = 1.0f; // Tamaño del bloque 
+    public float moveDistance = 1.0f; // Tamaï¿½o del bloque 
     public float moveSpeed = 10.0f;
     public Sprite spriteUp;
     public Sprite spriteDown;
@@ -80,4 +80,26 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
     }
+
+    public void ApplyPush(Vector2 pushDirection, float pushDistance)
+    {
+        if (!isMoving)
+        {
+            // Establecer la posiciï¿½n objetivo en la direcciï¿½n del empuje
+            targetPosition += (Vector3)(pushDirection * pushDistance);
+
+            // Cambiar la sprite del jugador segï¿½n la direcciï¿½n del empuje
+            if (Mathf.Abs(pushDirection.x) > Mathf.Abs(pushDirection.y))
+            {
+                spriteRenderer.sprite = pushDirection.x > 0 ? spriteRight : spriteLeft;
+            }
+            else
+            {
+                spriteRenderer.sprite = pushDirection.y > 0 ? spriteUp : spriteDown;
+            }
+
+            isMoving = true;
+        }
+    }
+
 }
