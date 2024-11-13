@@ -80,4 +80,25 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
     }
+
+    public void ApplyPush(Vector2 pushDirection, float pushDistance)
+    {
+        if (!isMoving)
+        {
+            // Establecer la posición objetivo en la dirección del empuje
+            targetPosition += (Vector3)(pushDirection * pushDistance);
+
+            // Cambiar la sprite del jugador según la dirección del empuje
+            if (Mathf.Abs(pushDirection.x) > Mathf.Abs(pushDirection.y))
+            {
+                spriteRenderer.sprite = pushDirection.x > 0 ? spriteRight : spriteLeft;
+            }
+            else
+            {
+                spriteRenderer.sprite = pushDirection.y > 0 ? spriteUp : spriteDown;
+            }
+
+            isMoving = true;
+        }
+    }
 }
