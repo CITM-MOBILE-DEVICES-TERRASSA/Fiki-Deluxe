@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyBird : MonoBehaviour
 {
@@ -47,17 +48,35 @@ public class EnemyBird : MonoBehaviour
 
     private IEnumerator DiveAndPush(Transform player)
     {
-        // Activar la animaci�n de picado (si existe)
         yield return new WaitForSeconds(diveDuration);
 
-        // Determinar la direcci�n de empuje
-        Vector2 pushDirection = (player.position - transform.position).normalized;
-
-        // Llamar al m�todo `ApplyPush` en el jugador para actualizar su posici�n objetivo
+        // Obtener la referencia al Tilemap y su grilla
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
+        Tilemap tilemap = playerMovement.tilemap;
+
+        if (tilemap != null)
         {
-            playerMovement.ApplyPush(pushDirection, pushDistance);
+            // Determinar la dirección del empuje
+            Vector2 pushDirection = (player.position - transform.position).normalized;
+
+            // Convertir la posición actual del jugador al espacio de la grilla
+            Vector3Int playerGridPosition = tilemap.WorldToCell(player.position);
+
+            // Calcular la nueva posición en la grilla basada en la dirección y distancia del empuje
+            Vector3Int pushOffset = new Vector3Int(
+                Mathf.RoundToInt(pushDirection.x * pushDistance),
+                Mathf.RoundToInt(pushDirection.y * pushDistance),
+                0
+            );
+
+            Vector3Int newGridPosition = playerGridPosition + pushOffset;
+
+            // Verificar que el nuevo tile es válido antes de mover al jugador
+            if (tilemap.HasTile(newGridPosition))
+            {
+                Vector3 targetWorldPosition = tilemap.GetCellCenterWorld(newGridPosition);
+                player.position = targetWorldPosition;
+            }
         }
 
         Destroy(gameObject);

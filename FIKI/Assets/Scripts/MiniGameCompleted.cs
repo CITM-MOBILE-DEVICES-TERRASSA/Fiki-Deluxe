@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MiniGameCompleted : MonoBehaviour
 {
-
-
     void Start()
     {
 
@@ -16,6 +14,4 @@ public class MiniGameCompleted : MonoBehaviour
     {
         LevelTransitionController.instance.StartTransition(4, 2);
     }
-
-    
 }

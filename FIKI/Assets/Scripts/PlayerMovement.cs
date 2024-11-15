@@ -1,22 +1,31 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveDistance = 1.0f; // Tama�o del bloque 
+    public Tilemap tilemap; // Referencia al Tilemap del mapa
     public float moveSpeed = 10.0f;
     public Sprite spriteUp;
     public Sprite spriteDown;
     public Sprite spriteLeft;
     public Sprite spriteRight;
+
     private SpriteRenderer spriteRenderer;
+    private Vector3Int gridPosition; // Posición del jugador en coordenadas de la grilla
+    private Vector3 targetWorldPosition; // Posición en el mundo hacia la que se mueve
+    private bool isMoving = false;
     private Vector2 startMousePosition;
     private Vector2 endMousePosition;
-    private Vector3 targetPosition;
-    private bool isMoving = false;
+
     void Start()
     {
-        targetPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Inicializa la posición en la grilla basándose en la posición actual
+        gridPosition = tilemap.WorldToCell(transform.position);
+        AlignToGrid();
     }
+
     void Update()
     {
         if (!isMoving)
@@ -25,34 +34,39 @@ public class PlayerMovement : MonoBehaviour
             {
                 startMousePosition = Input.mousePosition;
             }
-
             else if (Input.GetMouseButtonUp(0))
             {
                 endMousePosition = Input.mousePosition;
                 DetectSwipeDirection();
             }
         }
+
         if (isMoving)
         {
             MovePlayer();
         }
     }
+
     private void DetectSwipeDirection()
     {
         Vector2 swipeDelta = endMousePosition - startMousePosition;
+
         if (swipeDelta.magnitude > 50)
         {
             swipeDelta.Normalize();
+
+            Vector3Int direction = Vector3Int.zero;
+
             if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
             {
                 if (swipeDelta.x > 0)
                 {
-                    targetPosition += Vector3.right * moveDistance;
+                    direction = Vector3Int.right;
                     spriteRenderer.sprite = spriteRight;
                 }
                 else
                 {
-                    targetPosition += Vector3.left * moveDistance;
+                    direction = Vector3Int.left;
                     spriteRenderer.sprite = spriteLeft;
                 }
             }
@@ -60,46 +74,44 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (swipeDelta.y > 0)
                 {
-                    targetPosition += Vector3.up * moveDistance;
+                    direction = Vector3Int.up;
                     spriteRenderer.sprite = spriteUp;
                 }
                 else
                 {
-                    targetPosition += Vector3.down * moveDistance;
+                    direction = Vector3Int.down;
                     spriteRenderer.sprite = spriteDown;
                 }
             }
-            isMoving = true;
+
+            // Calcula la nueva posición de la grilla
+            Vector3Int newGridPosition = gridPosition + direction;
+
+            // Verifica si la nueva posición es válida (opcional: puedes agregar más lógica aquí)
+            if (tilemap.HasTile(newGridPosition))
+            {
+                gridPosition = newGridPosition;
+                targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
+                isMoving = true;
+            }
         }
     }
+
     private void MovePlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        if (transform.position == targetPosition)
+        transform.position = Vector3.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetWorldPosition) < 0.01f)
         {
+            transform.position = targetWorldPosition;
             isMoving = false;
         }
     }
 
-    public void ApplyPush(Vector2 pushDirection, float pushDistance)
+    private void AlignToGrid()
     {
-        if (!isMoving)
-        {
-            // Establecer la posici�n objetivo en la direcci�n del empuje
-            targetPosition += (Vector3)(pushDirection * pushDistance);
-
-            // Cambiar la sprite del jugador seg�n la direcci�n del empuje
-            if (Mathf.Abs(pushDirection.x) > Mathf.Abs(pushDirection.y))
-            {
-                spriteRenderer.sprite = pushDirection.x > 0 ? spriteRight : spriteLeft;
-            }
-            else
-            {
-                spriteRenderer.sprite = pushDirection.y > 0 ? spriteUp : spriteDown;
-            }
-
-            isMoving = true;
-        }
+        // Alinea la posición del jugador al centro del tile en el que se encuentra
+        targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
+        transform.position = targetWorldPosition;
     }
-
 }
