@@ -7,7 +7,7 @@ public class BirdSpawner : MonoBehaviour
     public Transform player; 
     public float spawnInterval = 3f;
     public float speed = 5f; 
-    public float diveDuration = 1.0f; 
+    public float diveDuration = 0.2f; 
     public float pushDistance = 1f; 
 
     private void Start()

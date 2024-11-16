@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap tilemap;           // Tilemap que contiene todos los tiles
     public float moveSpeed = 10.0f;   // Velocidad del jugador
 
-    private Vector3Int gridPosition;  // Posición actual del jugador en la cuadrícula
+    private Vector3Int gridPosition;  // Posiciï¿½n actual del jugador en la cuadrï¿½cula
     private Vector3 targetWorldPosition;
     private bool isMoving = false;
     private Vector2 startMousePosition;
@@ -14,8 +14,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posición inicial en la cuadrícula
+        gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posiciï¿½n inicial en la cuadrï¿½cula
         AlignToGrid(); // Alinea al jugador al centro de la celda
+    }
+    public void SetGridPosition(Vector3Int newGridPosition)
+    {
+        gridPosition = newGridPosition;
+        AlignToGrid(); // Asegura que el jugador se alinee correctamente
     }
 
     void Update()
@@ -38,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             MovePlayer();
         }
 
-        CheckPlayerOnWater(); // Comprueba si el jugador está en un tile de agua
+        CheckPlayerOnWater(); // Comprueba si el jugador estï¿½ en un tile de agua
     }
 
     private void DetectSwipeDirection()
@@ -52,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3Int direction = Vector3Int.zero;
 
-            // Determina la dirección según el swipe
+            // Determina la direcciï¿½n segï¿½n el swipe
             if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
             {
                 if (swipeDelta.x > 0)
@@ -80,10 +85,10 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            // Calcula la nueva posición en la cuadrícula
+            // Calcula la nueva posiciï¿½n en la cuadrï¿½cula
             Vector3Int newGridPosition = gridPosition + direction;
 
-            // Verifica si la nueva posición es válida
+            // Verifica si la nueva posiciï¿½n es vï¿½lida
             if (tilemap.HasTile(newGridPosition))
             {
                 gridPosition = newGridPosition;
@@ -95,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        // Mueve al jugador hacia la posición objetivo
+        // Mueve al jugador hacia la posiciï¿½n objetivo
         transform.position = Vector3.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
 
         // Cuando llega al objetivo, detiene el movimiento
@@ -115,10 +120,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckPlayerOnWater()
     {
-        // Obtiene la posición del jugador en coordenadas de celda del Tilemap
+        // Obtiene la posiciï¿½n del jugador en coordenadas de celda del Tilemap
         Vector3Int playerCellPosition = tilemap.WorldToCell(transform.position);
 
-        // Obtiene el tile en esa posición
+        // Obtiene el tile en esa posiciï¿½n
         TileBase tile = tilemap.GetTile(playerCellPosition);
 
         // Verifica si el tile es "Water_0"
@@ -130,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("¡El jugador ha caído en el agua y ha muerto!");
+        Debug.Log("ï¿½El jugador ha caï¿½do en el agua y ha muerto!");
         // Reinicia la escena actual
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
