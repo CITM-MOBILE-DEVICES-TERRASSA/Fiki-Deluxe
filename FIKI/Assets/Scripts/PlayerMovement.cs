@@ -68,17 +68,14 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3Int newGridPosition = gridPosition + direction;
 
-          
-            if (IsMovementBlocked(newGridPosition))
+            if (!IsMovementBlocked(newGridPosition))
             {
                 Debug.Log("Movimiento bloqueado: el destino es un tile prohibido.");
+                gridPosition = newGridPosition;
+                targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
+                isMoving = true;
                 return;
             }
-
-       
-            gridPosition = newGridPosition;
-            targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
-            isMoving = true;
         }
     }
 
@@ -92,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         TileBase targetTile = tilemap.GetTile(newGridPosition);
 
+        Debug.Log(targetTile.name);
      
         return targetTile != null && targetTile.name == "WaterDark_0";
     }
