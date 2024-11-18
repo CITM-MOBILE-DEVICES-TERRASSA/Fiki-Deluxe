@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public int score;
     public int maxscore;
     public int currentLevel;
+    public bool hasPrice;
 
     public GameObject pauseCanvas;
     public bool isPaused = false;
