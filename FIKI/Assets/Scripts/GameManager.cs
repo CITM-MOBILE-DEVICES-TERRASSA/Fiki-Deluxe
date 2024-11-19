@@ -15,6 +15,19 @@ public class Manager : MonoBehaviour
     public bool hasPrice;
 
     public GameObject pauseCanvas;
+
+    [System.Serializable]
+    public class SpawnPoint
+    {
+        public Transform point; // The spawn point transform
+    }
+
+    [Header("Snake Prefab")]
+    public GameObject food;
+
+    [Header("Spawn Settings")]
+    public List<SpawnPoint> spawnPoints; // List of spawn points with their directions
+
     public bool isPaused = false;
 
     [SerializeField] private TextMeshProUGUI currentLevelText;
@@ -35,6 +48,7 @@ public class Manager : MonoBehaviour
        
         pauseCanvas.SetActive(false);
         currentLevelText.text = currentLevel.ToString();
+        SpawnFood();
     }
     public void PauseisActive()
     {
@@ -79,5 +93,27 @@ public class Manager : MonoBehaviour
         Debug.Log("Score " + score);
         Debug.Log("Lives " + lives);
         Debug.Log("Level " + currentLevel);
+    }
+
+    void SpawnFood()
+    {
+        if (spawnPoints.Count == 0 || food == null)
+        {
+            Debug.LogWarning("No spawn points or prefab assigned!");
+            return;
+        }
+
+        // Select a random spawn point
+        int randomIndex = Random.Range(0, spawnPoints.Count);
+        SpawnPoint selectedSpawn = spawnPoints[randomIndex];
+
+        if (selectedSpawn.point == null)
+        {
+            Debug.LogWarning($"Spawn point at index {randomIndex} is not assigned!");
+            return;
+        }
+
+        // Instantiate the snake at the selected spawn point
+        GameObject snake = Instantiate(food, selectedSpawn.point.position, Quaternion.identity);
     }
 }

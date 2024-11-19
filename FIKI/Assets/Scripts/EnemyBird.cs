@@ -101,8 +101,6 @@ public class EnemyBird : MonoBehaviour
 
             // Aseguramos la posición final
             player.position = targetPosition;
-            
-            Debug.Log($"Nueva posición del jugador: {player.position}");
 
             // Si hay tilemap, actualizamos la posición en la grid
             if (playerMovement.tilemap != null)

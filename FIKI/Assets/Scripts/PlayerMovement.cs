@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
         AlignToGrid(); // Alinea al jugador al centro de la celda
     }
+
     public void SetGridPosition(Vector3Int newGridPosition)
     {
         gridPosition = newGridPosition;
@@ -164,10 +165,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("�El jugador ha ca�do en el agua y ha muerto!");
+        Debug.Log("¡El jugador ha muerto!");
         // Reinicia la escena actual
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
         );
     }
+
+private void OnCollisionEnter2D(Collision2D collision)
+{
+    // Check if the player collided with a snake
+    if (collision.gameObject.CompareTag("Snake"))
+    {
+        Die();
+    }
+}
 }
