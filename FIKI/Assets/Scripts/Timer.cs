@@ -4,11 +4,11 @@ using TMPro;
 public class TimerScript : MonoBehaviour
 {
     [Header("Configuración del Temporizador")]
-    public float timeRemaining = 300f; // Tiempo inicial (editable en el Inspector)
+    public float timeRemaining = 300f;
     public bool timerIsRunning = false;
 
     [Header("UI")]
-    public TextMeshProUGUI timerText; // Referencia al texto del temporizador
+    public TextMeshProUGUI timerText;
 
     void Start()
     {
@@ -18,8 +18,8 @@ public class TimerScript : MonoBehaviour
             return;
         }
 
-        timerIsRunning = true; // Inicia el temporizador
-        UpdateTimerDisplay(); // Mostrar el tiempo inicial
+        timerIsRunning = true;
+        UpdateTimerDisplay();
     }
 
     void Update()
@@ -28,8 +28,8 @@ public class TimerScript : MonoBehaviour
         {
             if (timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime; // Decrementar tiempo
-                UpdateTimerDisplay(); // Actualizar UI
+                timeRemaining -= Time.deltaTime; 
+                UpdateTimerDisplay();
             }
             else
             {
@@ -42,16 +42,16 @@ public class TimerScript : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        Debug.Log($"Actualizando texto: {timeRemaining}"); // Debug para verificar actualización
+        Debug.Log($"Actualizando texto: {timeRemaining}");
         if (timerText != null)
         {
-            timerText.text = Mathf.Ceil(timeRemaining).ToString(); // Actualiza el texto en pantalla
+            timerText.text = Mathf.Ceil(timeRemaining).ToString(); 
         }
     }
 
     private void OnTimerEnd()
     {
         Debug.Log("¡Tiempo agotado!");
-        // Lógica adicional al finalizar el temporizador
+        
     }
 }
