@@ -10,7 +10,7 @@ public class PriceLogic : MonoBehaviour
         {
             Manager.instance.hasPrice = true;
             Debug.Log("Price has been taken!");
-            this.enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,11 +14,18 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private Vector2 startMousePosition;
     private Vector2 endMousePosition;
+    private GameObject winScreen;
+    private GameObject gameOverScreen;
 
     void Start()
     {
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
         AlignToGrid(); // Alinea al jugador al centro de la celda
+        winScreen = GameObject.Find("winwin");
+        gameOverScreen = GameObject.Find("gameOver");
+
+        if (winScreen) winScreen.SetActive(false);
+        if (gameOverScreen) gameOverScreen.SetActive(false);
     }
 
     public void SetGridPosition(Vector3Int newGridPosition)
@@ -44,7 +54,12 @@ public class PlayerMovement : MonoBehaviour
             MovePlayer();
         }
 
-        CheckPlayerOnWater(); // Comprueba si el jugador est� en un tile de agua
+        CheckPlayerOnWater();
+
+        if (Manager.instance.lives <= 0)
+        {
+            Lose();
+        }    
     }
 
     private void DetectSwipeDirection()
@@ -166,7 +181,8 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         Debug.Log("¡El jugador ha muerto!");
-        // Reinicia la escena actual
+        Manager.instance.lives--;
+        Manager.instance.hasPrice = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
         );
@@ -180,4 +196,26 @@ private void OnCollisionEnter2D(Collision2D collision)
         Die();
     }
 }
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("SpawnZone") && Manager.instance.hasPrice) Win(); 
+    }
+
+    private void Win()
+    {
+        Debug.Log("You won");
+        winScreen.SetActive(true);
+        Manager.instance.hasPrice = false;
+        LevelTransitionController.instance.StartTransition(4, 2);
+    }
+
+    private void Lose()
+    {
+        Debug.Log("You lost");
+        gameOverScreen.SetActive(true);
+        LevelTransitionController.instance.StartTransition(4, 2);
+        Manager.instance.lives = 3;
+        gridPosition = tilemap.WorldToCell(transform.position);
+        AlignToGrid();
+    }
 }
