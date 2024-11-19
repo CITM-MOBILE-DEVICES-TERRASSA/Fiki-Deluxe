@@ -16,8 +16,6 @@ public class Manager : MonoBehaviour
 
     public GameObject pauseCanvas;
 
-   
-
     public bool isPaused = false;
 
     [SerializeField] private TextMeshProUGUI currentLevelText;
@@ -84,6 +82,4 @@ public class Manager : MonoBehaviour
         Debug.Log("Lives " + lives);
         Debug.Log("Level " + currentLevel);
     }
-
-    
 }

@@ -15,17 +15,12 @@ public class FoodManager : MonoBehaviour
 
     [Header("Spawn Settings")]
     public List<SpawnPoint> spawnPoints; // List of spawn points with their directions
-    // Start is called before the first frame update
+
     void Start()
     {
         SpawnFood();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void SpawnFood()
     {
         if (spawnPoints.Count == 0 || food == null)
