@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RewardScreen.unity
     guid: 16c9f69fbc929a94fbcd6c60a5c7dc34
+  - enabled: 1
+    path: Assets/Scenes/NextLevel.unity
+    guid: 25dff26fb37257f4fb6e1c75a4f83068
   m_configObjects: {}
