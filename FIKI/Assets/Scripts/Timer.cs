@@ -1,38 +1,57 @@
 using UnityEngine;
-using UnityEngine.UI; // Asegúrate de incluir esto si usas UI
 using TMPro;
+
 public class TimerScript : MonoBehaviour
 {
-    private float timeRemaining = 0f; // Tiempo total del temporizador
+    [Header("Configuración del Temporizador")]
+    public float timeRemaining = 300f;
     public bool timerIsRunning = false;
-    [SerializeField] private TextMeshProUGUI timerText; // Arrastra un Text de UI aquí en el Inspector
+
+    [Header("UI")]
+    public TextMeshProUGUI timerText;
 
     void Start()
     {
+        if (timerText == null)
+        {
+            Debug.LogError("No se asignó el TextMeshProUGUI en el campo 'Timer Text' del Inspector.");
+            return;
+        }
+
         timerIsRunning = true;
+        UpdateTimerDisplay();
     }
 
     void Update()
     {
         if (timerIsRunning)
         {
-            if (timeRemaining >= 0)
+            if (timeRemaining > 0)
             {
-                timeRemaining += Time.deltaTime;
+                timeRemaining -= Time.deltaTime; 
+                UpdateTimerDisplay();
             }
             else
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                // Aquí puedes añadir cualquier acción que quieras realizar cuando el tiempo se agote
-                Debug.Log("¡Tiempo agotado!");
+                OnTimerEnd();
             }
         }
-        if (timerText)
+    }
+
+    private void UpdateTimerDisplay()
+    {
+        Debug.Log($"Actualizando texto: {timeRemaining}");
+        if (timerText != null)
         {
-            timerText.text = Mathf.Ceil(timeRemaining).ToString();
+            timerText.text = Mathf.Ceil(timeRemaining).ToString(); 
         }
-        // Actualiza el texto del temporizador
+    }
+
+    private void OnTimerEnd()
+    {
+        Debug.Log("¡Tiempo agotado!");
         
     }
 }
