@@ -63,12 +63,14 @@ public class PlayerMovement : MonoBehaviour
                 if (swipeDelta.x > 0)
                 {
                     direction = Vector3Int.right;
-                    transform.rotation = Quaternion.Euler(0, 0, -90);
+                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                    transform.localScale = new Vector3(3, -3, 3);
                 }
                 else
                 {
                     direction = Vector3Int.left;
                     transform.rotation = Quaternion.Euler(0, 0, 90);
+                    transform.localScale = new Vector3(3, 3, 3);
                 }
             }
             else
@@ -77,11 +79,13 @@ public class PlayerMovement : MonoBehaviour
                 {
                     direction = Vector3Int.up;
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+                    transform.localScale = new Vector3(3, 3, 3);
                 }
                 else
                 {
                     direction = Vector3Int.down;
                     transform.rotation = Quaternion.Euler(0, 0, 180);
+                    transform.localScale = new Vector3(3, 3, 3);
                 }
             }
 
@@ -90,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (!IsMovementBlocked(newGridPosition))
             {
-                Debug.Log("Movimiento bloqueado: el destino es un tile prohibido.");
                 gridPosition = newGridPosition;
                 targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
                 isMoving = true;
@@ -101,17 +104,27 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsMovementBlocked(Vector3Int newGridPosition)
     {
-       
+        // Check if the new position is within the bounds of the tilemap
+        if (!tilemap.cellBounds.Contains(newGridPosition))
+        {
+            return true;
+        }
+
+        // Check if the new position has a tile
         if (!tilemap.HasTile(newGridPosition))
         {
-            return true; 
+            return true;
         }
 
         TileBase targetTile = tilemap.GetTile(newGridPosition);
 
-        Debug.Log(targetTile.name);
-     
-        return targetTile != null && targetTile.name == "WaterDark_0";
+        // Check if the target tile is a specific type that blocks movement
+        if (targetTile != null && (targetTile.name == "WaterDark_0" || targetTile.name == "SomeOtherBlockingTile"))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void MovePlayer()
