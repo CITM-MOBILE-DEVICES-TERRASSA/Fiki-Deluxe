@@ -11,6 +11,7 @@ public class EnemyBird : MonoBehaviour
     private bool diving;
     private Vector3 flyDirection;
     private Vector3 originalScale;
+    private Animator animator;
 
     public void Initialize(Transform playerTarget, float birdSpeed, float diveTime, float pushDist)
     {
@@ -20,6 +21,7 @@ public class EnemyBird : MonoBehaviour
         pushDistance = pushDist;
         originalScale = transform.localScale;
         flyDirection = (playerPosition - transform.position).normalized;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class EnemyBird : MonoBehaviour
         {
             Debug.Log("¡Colisión con jugador detectada!");
             diving = true;
+            animator.SetBool("Attacking", true);
             StartCoroutine(DiveAndPush(other.transform));
         }
     }
@@ -70,7 +73,6 @@ public class EnemyBird : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / diveTime;
             transform.position = Vector3.Lerp(startPos, diveTarget, t);
-            transform.localScale = Vector3.Lerp(originalScale, originalScale * 0.5f, t);
             yield return null;
         }
 
@@ -122,7 +124,7 @@ public class EnemyBird : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / recoveryTime;
             transform.localScale = Vector3.Lerp(originalScale * 0.5f, originalScale, t);
-            transform.position = Vector3.Lerp(transform.position, recoveryPos, t);
+            animator.SetBool("Attacking", false);
             yield return null;
         }
 
