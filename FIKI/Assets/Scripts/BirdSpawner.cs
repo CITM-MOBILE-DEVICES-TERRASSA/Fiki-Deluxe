@@ -25,7 +25,7 @@ public class BirdSpawner : MonoBehaviour
             GameObject bird = Instantiate(birdPrefab, spawnPos, Quaternion.identity);
 
             Vector2 direction = (player.position - bird.transform.position).normalized;
-            bird.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+            //bird.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
             bird.GetComponent<EnemyBird>().Initialize(player, speed, diveDuration, pushDistance);
         }

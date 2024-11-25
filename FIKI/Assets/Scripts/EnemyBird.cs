@@ -22,6 +22,8 @@ public class EnemyBird : MonoBehaviour
         originalScale = transform.localScale;
         flyDirection = (playerPosition - transform.position).normalized;
         animator = GetComponent<Animator>();
+
+        
     }
 
     private void Update()
@@ -34,6 +36,15 @@ public class EnemyBird : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (flyDirection.x < 0)
+        {
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
         }
     }
 
@@ -73,6 +84,7 @@ public class EnemyBird : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / diveTime;
             transform.position = Vector3.Lerp(startPos, diveTarget, t);
+            //transform.localScale = Vector3.Lerp(originalScale, originalScale * 0.5f, t);
             yield return null;
         }
 
@@ -124,6 +136,7 @@ public class EnemyBird : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / recoveryTime;
             transform.localScale = Vector3.Lerp(originalScale * 0.5f, originalScale, t);
+            //transform.position = Vector3.Lerp(transform.position, recoveryPos, t);
             animator.SetBool("Attacking", false);
             yield return null;
         }
