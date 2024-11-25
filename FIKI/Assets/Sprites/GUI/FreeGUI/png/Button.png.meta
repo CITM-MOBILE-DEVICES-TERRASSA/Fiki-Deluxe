@@ -222,6 +222,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pause_Normal
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 575
+        width: 182
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9149087c84997e429dd050265253a62
+      internalID: 859688348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause_Pressed
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 576
+        width: 183
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e2b81acde992d4d8295e86ef486aeb
+      internalID: -370188586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -239,6 +281,8 @@ TextureImporter:
       Button_Normal: -2091825941
       Button_PressedScore: 600158896
       Button_Score: 616669768
+      Pause_Normal: 859688348
+      Pause_Pressed: -370188586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
