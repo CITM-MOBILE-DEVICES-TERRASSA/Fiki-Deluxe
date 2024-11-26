@@ -132,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 30564532}
   - component: {fileID: 30564531}
-  - component: {fileID: 30564530}
   - component: {fileID: 30564533}
   m_Layer: 0
   m_Name: Main Camera
@@ -141,14 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &30564530
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30564529}
-  m_Enabled: 1
 --- !u!20 &30564531
 Camera:
   m_ObjectHideFlags: 0
@@ -92674,6 +92665,7 @@ GameObject:
   - component: {fileID: 1328086943}
   - component: {fileID: 1328086944}
   - component: {fileID: 1328086945}
+  - component: {fileID: 1328086946}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -92697,7 +92689,7 @@ MonoBehaviour:
   moveSpeed: 10
   soundClip: {fileID: 8300000, guid: e5355bd80b8719d4c8e167b15477a41d, type: 3}
   winScreenFx: {fileID: 8300000, guid: a63e4ccece2c36142abde60397bc1c18, type: 3}
-  gameOverScreenFx: {fileID: 8300000, guid: b6c71ad93c1182c4483a74283199f9b3, type: 3}
+  gameOverScreenFx: {fileID: 8300000, guid: 83774d3bd122c8a499de49005fd753f0, type: 3}
   particlesPrefab: {fileID: 2845967905212262544, guid: fd0eea91b8f103c4499cee6ccd93609c, type: 3}
 --- !u!212 &1328086939
 SpriteRenderer:
@@ -92955,6 +92947,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &1328086946
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328086937}
+  m_Enabled: 1
 --- !u!1 &1365700495
 GameObject:
   m_ObjectHideFlags: 0
