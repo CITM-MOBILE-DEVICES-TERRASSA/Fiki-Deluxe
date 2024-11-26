@@ -23,7 +23,14 @@ public class EnemyBird : MonoBehaviour
         flyDirection = (playerPosition - transform.position).normalized;
         animator = GetComponent<Animator>();
 
-        
+        if (flyDirection.x < 0)
+        {
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
+        }
     }
 
     private void Update()
@@ -36,15 +43,6 @@ public class EnemyBird : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
-
-        if (flyDirection.x < 0)
-        {
-            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
         }
     }
 
@@ -73,6 +71,16 @@ public class EnemyBird : MonoBehaviour
         Vector2 pushDir = flyDirection;
         Debug.Log($"Dirección de empuje calculada: {pushDir}");
 
+        // Calcular la dirección hacia el jugador antes de zambullirse
+        if (player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z); // Mirar izquierda
+        }
+        else
+        {
+            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z); // Mirar derecha
+        }
+
         // Fase 1: Zambullida
         Vector3 startPos = transform.position;
         Vector3 diveTarget = player.position;
@@ -84,7 +92,6 @@ public class EnemyBird : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / diveTime;
             transform.position = Vector3.Lerp(startPos, diveTarget, t);
-            //transform.localScale = Vector3.Lerp(originalScale, originalScale * 0.5f, t);
             yield return null;
         }
 
@@ -135,8 +142,7 @@ public class EnemyBird : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / recoveryTime;
-            transform.localScale = Vector3.Lerp(originalScale * 0.5f, originalScale, t);
-            //transform.position = Vector3.Lerp(transform.position, recoveryPos, t);
+            transform.position = Vector3.Lerp(transform.position, recoveryPos, t);
             animator.SetBool("Attacking", false);
             yield return null;
         }
@@ -146,6 +152,15 @@ public class EnemyBird : MonoBehaviour
             yield return new WaitForFixedUpdate();
             playerMovement.enabled = true;
             Debug.Log("PlayerMovement reactivado");
+        }
+
+        if (flyDirection.x < 0)
+        {
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
         }
 
         diving = false;
