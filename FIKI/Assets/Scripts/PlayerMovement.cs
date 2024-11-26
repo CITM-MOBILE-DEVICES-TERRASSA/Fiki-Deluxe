@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip soundClip; // Arrastra tu clip de audio aquí en el Inspector
     private AudioSource audioSource;
 
+    public AudioClip winScreenFx;
+    public AudioClip gameOverScreenFx;
+
     // Referencia al prefab de partículas
     [SerializeField] private GameObject particlesPrefab;
 
@@ -214,6 +217,7 @@ private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("You won");
         winScreen.SetActive(true);
+        AudioManager.instance.PlaySFX(winScreenFx);
         Manager.instance.hasPrice = false;
         LevelTransitionController.instance.StartTransition(4, 2);
     }
@@ -222,6 +226,7 @@ private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("You lost");
         gameOverScreen.SetActive(true);
+        AudioManager.instance.PlaySFX(gameOverScreenFx);
         LevelTransitionController.instance.StartTransition(4, 2);
         Manager.instance.lives = 3;
         gridPosition = tilemap.WorldToCell(transform.position);
