@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCollected: {fileID: 8300000, guid: a63e4ccece2c36142abde60397bc1c18, type: 3}
+  collectParticlesPrefab: {fileID: 1341983782473475039, guid: 238428a9e4084cb4a80f3e18c3901ed4, type: 3}
