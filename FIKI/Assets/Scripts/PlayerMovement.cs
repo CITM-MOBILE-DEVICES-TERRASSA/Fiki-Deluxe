@@ -148,12 +148,9 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    // Referencia al prefab de partículas
-    [SerializeField] private GameObject particlesPrefab;
-
     private void MovePlayer()
     {
-        // Mueve al jugador hacia la posición objetivo
+        // Mueve al jugador hacia la posici�n objetivo
         transform.position = Vector3.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
 
         // Cuando llega al objetivo, detiene el movimiento
@@ -161,38 +158,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = targetWorldPosition;
             isMoving = false;
-<<<<<<< Updated upstream
             PlaySound();
-=======
-<<<<<<< HEAD
-
-            // Instancia partículas en la posición actual
-            if (particlesPrefab != null)
-            {
-                GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
-
-                // Obtén la duración del sistema de partículas y destruye el objeto después
-                ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
-                if (particleSystem != null)
-                {
-                    Destroy(particles, particleSystem.main.duration + particleSystem.main.startLifetime.constant);
-                }
-                else
-                {
-                    Debug.LogWarning("El prefab de partículas no tiene un sistema de partículas.");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Prefab de partículas no asignado en el inspector.");
-            }
-=======
-            PlaySound();
->>>>>>> 2b4ca46cdcae4886f80b4c5aa02a0bd6ac022ec3
->>>>>>> Stashed changes
         }
     }
-
 
     private void AlignToGrid()
     {
