@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip winScreenFx;
     public AudioClip gameOverScreenFx;
 
+    public AudioClip lifeLostFx;
+
     // Referencia al prefab de partículas
     [SerializeField] private GameObject particlesPrefab;
 
@@ -194,6 +196,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("¡El jugador ha muerto!");
         animator.Play("Player_Die");
         Manager.instance.lives--;
+        if (Manager.instance.lives > 0)
+        {
+            AudioManager.instance.PlaySFX(lifeLostFx);
+        }
         Manager.instance.hasPrice = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name

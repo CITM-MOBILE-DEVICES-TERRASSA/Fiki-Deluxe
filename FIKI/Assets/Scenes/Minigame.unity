@@ -92690,6 +92690,7 @@ MonoBehaviour:
   soundClip: {fileID: 8300000, guid: e5355bd80b8719d4c8e167b15477a41d, type: 3}
   winScreenFx: {fileID: 8300000, guid: a63e4ccece2c36142abde60397bc1c18, type: 3}
   gameOverScreenFx: {fileID: 8300000, guid: 83774d3bd122c8a499de49005fd753f0, type: 3}
+  lifeLostFx: {fileID: 8300000, guid: e774c9d58b561944480ad639503c9f9c, type: 3}
   particlesPrefab: {fileID: 2845967905212262544, guid: fd0eea91b8f103c4499cee6ccd93609c, type: 3}
 --- !u!212 &1328086939
 SpriteRenderer:
@@ -92907,7 +92908,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
