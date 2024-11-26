@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
         TileBase tile = tilemap.GetTile(playerCellPosition);
 
         // Verifica si el tile es "Water_0"
-        if (tile != null && tile.name == "Water_0")
+        if (tile != null && tile.name == "tileset_version1.1_93")
         {
             Die();
         }
