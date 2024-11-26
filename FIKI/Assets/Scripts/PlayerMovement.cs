@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 endMousePosition;
     private GameObject winScreen;
     private GameObject gameOverScreen;
+    private Animator animator;
 
     public AudioClip soundClip; // Arrastra tu clip de audio aquí en el Inspector
     private AudioSource audioSource;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
         AlignToGrid(); // Alinea al jugador al centro de la celda
+        animator = GetComponent<Animator>();
         winScreen = GameObject.Find("winwin");
         gameOverScreen = GameObject.Find("gameOver");
 
@@ -87,14 +89,12 @@ public class PlayerMovement : MonoBehaviour
                 if (swipeDelta.x > 0)
                 {
                     direction = Vector3Int.right;
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    transform.localScale = new Vector3(3, -3, 3);
+                    transform.localScale = new Vector3(3, 3, 3);
                 }
                 else
                 {
                     direction = Vector3Int.left;
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    transform.localScale = new Vector3(3, 3, 3);
+                    transform.localScale = new Vector3(-3, 3, 3);
                 }
             }
             else
@@ -102,14 +102,10 @@ public class PlayerMovement : MonoBehaviour
                 if (swipeDelta.y > 0)
                 {
                     direction = Vector3Int.up;
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    transform.localScale = new Vector3(3, 3, 3);
                 }
                 else
                 {
                     direction = Vector3Int.down;
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                    transform.localScale = new Vector3(3, 3, 3);
                 }
             }
 
@@ -121,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 gridPosition = newGridPosition;
                 targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
                 isMoving = true;
+                animator.Play("Player_Walk");
                 return;
             }
         }
@@ -163,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
             PlaySound();
             PlayParticles();
+            animator.SetBool("Walking", false);
         }
     }
 
@@ -191,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         Debug.Log("¡El jugador ha muerto!");
+        animator.Play("Player_Die");
         Manager.instance.lives--;
         Manager.instance.hasPrice = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(

@@ -54,7 +54,7 @@ public class EnemyBird : MonoBehaviour
         {
             Debug.Log("¡Colisión con jugador detectada!");
             diving = true;
-            animator.SetBool("Attacking", true);
+            animator.Play("Bird_Attack");
             StartCoroutine(DiveAndPush(other.transform));
         }
     }

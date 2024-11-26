@@ -54,7 +54,7 @@ public class Snake : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
 
             // Ajustar 90 grados para alinear correctamente con la "cabeza" de la serpiente
-            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+            //transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
     }
 
