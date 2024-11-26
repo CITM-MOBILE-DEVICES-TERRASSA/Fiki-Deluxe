@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip soundClip; // Arrastra tu clip de audio aquí en el Inspector
     private AudioSource audioSource;
 
+    // Referencia al prefab de partículas
+    [SerializeField] private GameObject particlesPrefab;
+
     void Start()
     {
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
@@ -159,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = targetWorldPosition;
             isMoving = false;
             PlaySound();
+            PlayParticles();
         }
     }
 
@@ -239,4 +243,33 @@ private void OnTriggerEnter2D(Collider2D collision)
             Debug.LogWarning("No se ha asignado un AudioClip.");
         }
     }
+
+
+    public void PlayParticles()
+    {
+        // Instancia partículas en la posición actual
+        if (particlesPrefab != null)
+        {
+            GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
+
+            // Obtén la duración del sistema de partículas y destruye el objeto después
+            ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                Destroy(particles, particleSystem.main.duration + particleSystem.main.startLifetime.constant);
+            }
+            else
+            {
+                Debug.LogWarning("El prefab de partículas no tiene un sistema de partículas.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Prefab de partículas no asignado en el inspector.");
+        }
+
+    }
+
+
+
 }
