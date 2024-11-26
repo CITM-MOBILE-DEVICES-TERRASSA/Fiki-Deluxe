@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
-    public GameObject Puntuacion_Canvas; 
+    public GameObject Puntuacion_Canvas;
+
+    public AudioClip atrasFx;
 
     void Start()
     {
@@ -61,6 +63,7 @@ public class LevelSelector : MonoBehaviour
         
         if (Puntuacion_Canvas != null)
         {
+            AudioManager.instance.PlaySFX(atrasFx);
             Puntuacion_Canvas.SetActive(false);
         }
     }

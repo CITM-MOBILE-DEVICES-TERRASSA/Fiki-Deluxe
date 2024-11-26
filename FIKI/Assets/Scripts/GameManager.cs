@@ -16,6 +16,8 @@ public class Manager : MonoBehaviour
 
     public GameObject pauseCanvas;
 
+    public AudioClip atrasFx;
+
     public bool isPaused = false;
 
     [SerializeField] private TextMeshProUGUI currentLevelText;
@@ -47,6 +49,7 @@ public class Manager : MonoBehaviour
 
     public void PauseisNotActive()
     {
+        AudioManager.instance.PlaySFX(atrasFx);
         pauseCanvas.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
