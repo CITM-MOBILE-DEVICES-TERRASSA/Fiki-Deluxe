@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private GameObject winScreen;
     private GameObject gameOverScreen;
 
+    public AudioClip soundClip; // Arrastra tu clip de audio aquí en el Inspector
+    private AudioSource audioSource;
+
     void Start()
     {
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
@@ -26,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (winScreen) winScreen.SetActive(false);
         if (gameOverScreen) gameOverScreen.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void SetGridPosition(Vector3Int newGridPosition)
@@ -153,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = targetWorldPosition;
             isMoving = false;
+            PlaySound();
         }
     }
 
@@ -217,5 +223,20 @@ private void OnTriggerEnter2D(Collider2D collision)
         Manager.instance.lives = 3;
         gridPosition = tilemap.WorldToCell(transform.position);
         AlignToGrid();
+    }
+
+
+    public void PlaySound()
+    {
+        if (soundClip != null)
+        {
+            // Asigna el clip al AudioSource y reprodúcelo
+            audioSource.clip = soundClip;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No se ha asignado un AudioClip.");
+        }
     }
 }
