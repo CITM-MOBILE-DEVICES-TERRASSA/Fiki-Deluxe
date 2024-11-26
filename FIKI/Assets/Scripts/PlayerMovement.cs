@@ -27,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip lifeLostFx;
 
     // Referencia al prefab de partículas
-    [SerializeField] private GameObject particlesPrefab;
+    [SerializeField] private GameObject walkParticlesPrefab;
+    
+    [SerializeField] private GameObject waterParticlesPrefab;
+    private bool waterPlayedParticles = false; // Controla si las partículas ya se reprodujeron
 
     void Start()
     {
@@ -164,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = targetWorldPosition;
             isMoving = false;
             PlaySound();
-            PlayParticles();
+            PlayWalkParticles();
             animator.SetBool("Walking", false);
         }
     }
@@ -176,18 +179,21 @@ public class PlayerMovement : MonoBehaviour
         transform.position = targetWorldPosition;
     }
 
+
+
     private void CheckPlayerOnWater()
     {
-        // Obtiene la posici�n del jugador en coordenadas de celda del Tilemap
+        // Obtiene la posición del jugador en coordenadas de celda del Tilemap
         Vector3Int playerCellPosition = tilemap.WorldToCell(transform.position);
 
-        // Obtiene el tile en esa posici�n
+        // Obtiene el tile en esa posición
         TileBase tile = tilemap.GetTile(playerCellPosition);
 
-        // Verifica si el tile es "Water_0"
-        if (tile != null && tile.name == "tileset_version1.1_93")
+        // Verifica si el tile es "Water_0" y aún no ha jugado partículas
+        if (tile != null && tile.name == "tileset_version1.1_93" && !waterPlayedParticles)
         {
-            Die();
+            waterPlayedParticles = true; // Marca que las partículas ya se están reproduciendo
+            PlayWaterParticles(); // Reproduce partículas y llama a Die después
         }
     }
 
@@ -255,12 +261,53 @@ private void OnTriggerEnter2D(Collider2D collision)
     }
 
 
-    public void PlayParticles()
+ 
+    private IEnumerator WaitAndDie(float duration)
+    {
+        yield return new WaitForSeconds(duration); // Espera el tiempo especificado
+        Die(); // Llama a Die después de la espera
+    }
+
+
+    public void PlayWaterParticles()
     {
         // Instancia partículas en la posición actual
-        if (particlesPrefab != null)
+        if (waterParticlesPrefab != null)
         {
-            GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
+            GameObject particles = Instantiate(waterParticlesPrefab, transform.position, Quaternion.identity);
+
+            // Obtén la duración del sistema de partículas y destruye el objeto después
+            ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                float totalDuration = particleSystem.main.duration + particleSystem.main.startLifetime.constant;
+
+                // Espera la duración del sistema de partículas antes de llamar a Die()
+                StartCoroutine(WaitAndDie(totalDuration));
+
+                Destroy(particles, totalDuration); // Destruye las partículas después de que terminen
+            }
+            else
+            {
+                Debug.LogWarning("El prefab de partículas no tiene un sistema de partículas.");
+                Die(); // Llama a Die inmediatamente si no hay partículas válidas
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Prefab de partículas no asignado en el inspector.");
+            Die(); // Llama a Die inmediatamente si no hay prefab
+        }
+    }
+
+    
+
+    public void PlayWalkParticles()
+    {
+        // Instancia partículas en la posición actual
+        if (walkParticlesPrefab != null)
+        {
+            GameObject particles = Instantiate(walkParticlesPrefab, transform.position, Quaternion.identity);
 
             // Obtén la duración del sistema de partículas y destruye el objeto después
             ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
@@ -279,7 +326,6 @@ private void OnTriggerEnter2D(Collider2D collision)
         }
 
     }
-
 
 
 }
