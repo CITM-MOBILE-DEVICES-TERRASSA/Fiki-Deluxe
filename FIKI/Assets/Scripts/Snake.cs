@@ -35,7 +35,7 @@ public class Snake : MonoBehaviour
         transform.position += moveDirection * speed * Time.deltaTime;
 
         // Actualizar la animación de estiramiento
-        UpdateStretchAnimation();
+        //UpdateStretchAnimation();
     }
 
     public void SetDirection(Vector3 direction)
@@ -50,11 +50,17 @@ public class Snake : MonoBehaviour
     {
         if (moveDirection != Vector3.zero)
         {
-            // Calcular el ángulo para rotar la serpiente
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-
-            // Ajustar 90 grados para alinear correctamente con la "cabeza" de la serpiente
-            //transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+            // Ajustar la escala del sprite en función de la dirección del movimiento
+            if (moveDirection.x < 0)
+            {
+                // Si va hacia la izquierda, invertir el sprite
+                transform.localScale = new Vector3(-2, 2, 2);
+            }
+            else
+            {
+                // Si va hacia la derecha, mantener la dirección original
+                transform.localScale = new Vector3(2, 2, 2);
+            }
         }
     }
 
