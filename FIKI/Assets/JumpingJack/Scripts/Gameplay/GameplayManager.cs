@@ -28,7 +28,7 @@ public class GameplayManager : MonoBehaviour
 
     public void ReturnToLobby()
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("LevelSelector");
         int totalScore = PlayerPrefs.GetInt("totalScore", 0);
         PlayerPrefs.SetInt("totalScore", totalScore + currentScore);
         Time.timeScale = 1.0f;
