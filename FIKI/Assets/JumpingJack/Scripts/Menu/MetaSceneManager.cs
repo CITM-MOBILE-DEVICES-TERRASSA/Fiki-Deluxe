@@ -1,13 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class MetaSceneManager : MonoBehaviour
 {
-
+    //private ScoreManager scoreManager;
     public TextMeshProUGUI totalScoreText;
 
     private void Start()
     {
+        //scoreManager = ScoreManager.Instance;
         // Llamamos al método para cargar y mostrar el total de puntos
         DisplayTotalScore();
     }
@@ -22,6 +26,11 @@ public class MetaSceneManager : MonoBehaviour
         if (totalScoreText != null)
         {
             totalScoreText.text = "TOTAL SCORE: " + totalScore;
+            if (totalScore > /*scoreManager.MaxScoreJumpingJAck*/0)
+            {
+                /*scoreManager.MaxScoreJumpingJAck*/int a  = totalScore;
+            }
+
         }
         else
         {
