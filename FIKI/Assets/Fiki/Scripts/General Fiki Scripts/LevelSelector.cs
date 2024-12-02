@@ -21,27 +21,27 @@ public class LevelSelector : MonoBehaviour
 
     public void Minigame2()
     {
-        // Implementar lógica para Minigame2
+        LevelTransitionController.instance.StartTransition(5, 2);
     }
 
     public void Minigame3()
     {
-        // Implementar lógica para Minigame3
+        // Implementar lï¿½gica para Minigame3
     }
 
     public void Minigame4()
     {
-        // Implementar lógica para Minigame4
+        // Implementar lï¿½gica para Minigame4
     }
 
     public void Minigame5()
     {
-        // Implementar lógica para Minigame5
+        // Implementar lï¿½gica para Minigame5
     }
 
     public void Minigame6()
     {
-        // Implementar lógica para Minigame6
+        // Implementar lï¿½gica para Minigame6
     }
 
     public void Puntuacion()
