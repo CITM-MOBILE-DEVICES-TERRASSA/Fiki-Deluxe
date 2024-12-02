@@ -25,10 +25,10 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
 
-   
     public int MaxScoreJumpingJAck;
     public int MaxScoreFiki;
-   
+    public int MaxTotalLevels;
+    public int MaxTotalGame;
 
 
 

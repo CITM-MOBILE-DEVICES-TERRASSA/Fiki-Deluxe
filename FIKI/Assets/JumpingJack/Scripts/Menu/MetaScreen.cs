@@ -9,8 +9,11 @@ public class MetaScreen : MonoBehaviour
     public Text scoreText;
     private int totalScore = 0;
 
+    //private ScoreManager scoremanager;
+
     private void Start()
     {
+        //scoreManager = ScoreManager.Instance;
         UpdateScoreDisplay();
     }
 
