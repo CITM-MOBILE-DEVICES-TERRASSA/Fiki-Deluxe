@@ -85,4 +85,12 @@ public class Manager : MonoBehaviour
         Debug.Log("Lives " + lives);
         Debug.Log("Level " + currentLevel);
     }
+
+    public void GoToMenu()
+    {
+        Time.timeScale = 1;
+        Save(); // revisqar com posar player`perfs o q 
+        SceneManager.LoadScene("LevelSelector");
+    }
+
 }

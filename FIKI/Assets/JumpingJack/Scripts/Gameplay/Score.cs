@@ -1,28 +1,27 @@
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private string scoreTextObjectName = "Score"; // Nombre del objeto de texto del marcador
-    private TextMeshProUGUI scoreText; // Referencia al marcador
-    private Timer timer; // Referencia al temporizador
-    private int levelScore; // Puntuación del nivel actual
+    [SerializeField] private string scoreTextObjectName = "Score";
+    private TextMeshProUGUI scoreText;
+    private Timer timer;
+    private int levelScore;
     private int lastDisplayedScore = -1; // Para evitar actualizaciones innecesarias
 
     void Start()
     {
-        timer = FindObjectOfType<Timer>(); // Encuentra el temporizador
-        InitializeScoreText(); // Inicializa el marcador
-        ResetScore(); // Reinicia el marcador al empezar
-
-        //UpdateLobbyScore(); falta acabar aquest + assembly
+        timer = FindObjectOfType<Timer>();
+        InitializeScoreText();
+        ResetScore();              
     }
 
     void Update()
     {
         if (timer != null)
         {
-            UpdateLevelScore(); // Actualiza la puntuación según el tiempo transcurrido
+            UpdateLevelScore();
         }
     }
 
@@ -52,20 +51,22 @@ public class Score : MonoBehaviour
         UpdateScoreDisplay();
     }
 
-    /// <summary>
-    /// Llama a este método al completar el nivel para añadir los puntos al total acumulado.
-    /// </summary>
     public void AddScoreToTotal()
     {
-        // Obtiene la puntuación total acumulada
+        if (UpdateLobbyScore.Instance != null)
+        {
+            UpdateLobbyScore.Instance.UpdateGame2Score(levelScore);
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("No se encontró una instancia de UpdateLobbyScore en la escena.");
+        }
+
         int totalScore = PlayerPrefs.GetInt("totalScore", 0);
-
-        // Añade la puntuación del nivel actual
         totalScore += levelScore;
-
-        // Guarda la puntuación total actualizada
+        // Guarda punt total actualizada
         PlayerPrefs.SetInt("totalScore", totalScore);
-        PlayerPrefs.Save(); // Asegura que los datos se escriban en disco
+        PlayerPrefs.Save(); 
     }
 
     private void InitializeScoreText()
@@ -78,7 +79,7 @@ public class Score : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"No se encontró el objeto TextMeshProUGUI con el nombre '{scoreTextObjectName}'.");
+            UnityEngine.Debug.LogWarning($"No se encontró el objeto TextMeshProUGUI con el nombre '{scoreTextObjectName}'.");
         }
     }
 }

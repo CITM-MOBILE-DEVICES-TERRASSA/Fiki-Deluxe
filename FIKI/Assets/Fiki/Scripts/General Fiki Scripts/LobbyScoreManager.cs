@@ -6,15 +6,36 @@ using System;
 
 public class UpdateLobbyScore : MonoBehaviour
 {
+    // Singleton Instance
+    public static UpdateLobbyScore Instance { get; private set; }
+
+    [Header("UI Elements")]
     public TextMeshProUGUI FikiText;          
     public TextMeshProUGUI JumpingJackText;  
     public TextMeshProUGUI TotalScoreText;
 
+    [HideInInspector]
     public int Game1Score { get; private set; } //(Fiki)
+    [HideInInspector]
     public int Game2Score { get; private set; } //(Jumping Jack)
+
+    private void Awake()
+    {
+        //Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);//si quisieramos q algo persista entre escenas modificar o eliminar esto
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
+        AssignReferences();
         UpdateScoreTotal();
     }
 
@@ -77,6 +98,18 @@ public class UpdateLobbyScore : MonoBehaviour
         }
 
         Debug.Log("Puntuación total actualizada: " + totalScore);
+    }
+
+    private void AssignReferences()
+    {
+        if (FikiText == null)
+            FikiText = GameObject.Find("FikiText").GetComponent<TextMeshProUGUI>();
+
+        if (JumpingJackText == null)
+            JumpingJackText = GameObject.Find("JumpingJackText").GetComponent<TextMeshProUGUI>();
+
+        if (TotalScoreText == null)
+            TotalScoreText = GameObject.Find("TotalScoreText").GetComponent<TextMeshProUGUI>();
     }
 }
 
