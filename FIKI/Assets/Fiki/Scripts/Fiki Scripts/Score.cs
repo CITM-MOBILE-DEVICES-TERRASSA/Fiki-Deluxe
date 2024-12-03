@@ -26,6 +26,8 @@ public class Score : MonoBehaviour
         currentScoreText.text = Manager.instance.score.ToString();
         highScoreText.text = Manager.instance.maxscore.ToString();
         UpdateHighScore();
+
+        //GlobalScoreManager.Instance.UpdateGame1Score(Manager.instance.score); mañana arreglo 
     }
 
     private void UpdateHighScore()
@@ -42,5 +44,8 @@ public class Score : MonoBehaviour
         Manager.instance.score++;
         currentScoreText.text = Manager.instance.score.ToString();
         UpdateHighScore();
+
+        //para la score Global del Lobby
+        //GlobalScoreManager.Instance.UpdateGame1Score(Manager.instance.score); //mañana lo arreglo q me estoy durmiendo
     }
 }

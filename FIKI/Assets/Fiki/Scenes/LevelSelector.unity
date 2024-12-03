@@ -1063,8 +1063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90edeb126293d424f9dbd1ebe4113e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fiki: {fileID: 1321941935}
-  JumpingJack: {fileID: 2076697942}
+  FikiText: {fileID: 0}
+  JumpingJackText: {fileID: 0}
+  TotalScoreText: {fileID: 0}
 --- !u!4 &379185720
 Transform:
   m_ObjectHideFlags: 0
