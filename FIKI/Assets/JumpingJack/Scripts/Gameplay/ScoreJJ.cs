@@ -9,12 +9,19 @@ public class Score : MonoBehaviour
     private Timer timer;
     private int levelScore;
     private int lastDisplayedScore = -1; // Para evitar actualizaciones innecesarias
+    private UpdateLobbyScore lobbyScoreManager;
 
     void Start()
     {
         timer = FindObjectOfType<Timer>();
         InitializeScoreText();
-        ResetScore();              
+        ResetScore();
+                
+        lobbyScoreManager = UpdateLobbyScore.Instance;
+        if (lobbyScoreManager == null)
+        {
+            UnityEngine.Debug.LogError("No se encontró una instancia de UpdateLobbyScore en la escena");
+        }
     }
 
     void Update()
@@ -49,13 +56,18 @@ public class Score : MonoBehaviour
         levelScore = 0;
         lastDisplayedScore = -1;
         UpdateScoreDisplay();
+
+        if (lobbyScoreManager != null)
+        {
+            lobbyScoreManager.UpdateGame2Score(0); //reinicia la puntuacion global del juego
+        }
     }
 
     public void AddScoreToTotal()
     {
-        if (UpdateLobbyScore.Instance != null)
+        if (lobbyScoreManager != null)
         {
-            UpdateLobbyScore.Instance.UpdateGame2Score(levelScore);
+            lobbyScoreManager.UpdateGame2Score(levelScore);
         }
         else
         {
@@ -64,10 +76,10 @@ public class Score : MonoBehaviour
 
         int totalScore = PlayerPrefs.GetInt("totalScore", 0);
         totalScore += levelScore;
-        // Guarda punt total actualizada
         PlayerPrefs.SetInt("totalScore", totalScore);
-        PlayerPrefs.Save(); 
+        PlayerPrefs.Save();
     }
+
 
     private void InitializeScoreText()
     {

@@ -337,7 +337,7 @@ MonoBehaviour:
   slideSpeed: 8
   positionCheckFrames: 20
   positionTolerance: 0.01
-  idleDuration: 0.3
+  idleDuration: 5
   playerCollider: {fileID: 7021548111879229182}
   slideCollider: {fileID: 9155337159684312159}
   spriteTransform: {fileID: 5122751235266106341}
