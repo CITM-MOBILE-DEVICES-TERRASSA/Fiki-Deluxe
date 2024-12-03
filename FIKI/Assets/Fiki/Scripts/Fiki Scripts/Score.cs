@@ -27,7 +27,15 @@ public class Score : MonoBehaviour
         highScoreText.text = Manager.instance.maxscore.ToString();
         UpdateHighScore();
 
-        //GlobalScoreManager.Instance.UpdateGame1Score(Manager.instance.score); mañana arreglo 
+        var lobbyScoreManager = FindObjectOfType<UpdateLobbyScore>();
+        if (lobbyScoreManager != null)
+        {
+            lobbyScoreManager.UpdateGame1Score(Manager.instance.score);
+        }
+        else
+        {
+            Debug.LogError("No se encontró un LobbyScoreManager en la escena.");
+        }
     }
 
     private void UpdateHighScore()
@@ -46,6 +54,14 @@ public class Score : MonoBehaviour
         UpdateHighScore();
 
         //para la score Global del Lobby
-        //GlobalScoreManager.Instance.UpdateGame1Score(Manager.instance.score); //mañana lo arreglo q me estoy durmiendo
+        var lobbyScoreManager = FindObjectOfType<UpdateLobbyScore>();
+        if (lobbyScoreManager != null)
+        {
+            lobbyScoreManager.UpdateGame1Score(Manager.instance.score);
+        }
+        else
+        {
+            Debug.LogError("No se encontró un LobbyScoreManager en la escena.");
+        }
     }
 }

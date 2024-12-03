@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 38348846}
   - component: {fileID: 38348845}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Jumping Jack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &109992598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,9 +1063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90edeb126293d424f9dbd1ebe4113e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FikiText: {fileID: 0}
-  JumpingJackText: {fileID: 0}
-  TotalScoreText: {fileID: 0}
+  FikiText: {fileID: 1772905627}
+  JumpingJackText: {fileID: 38348845}
+  TotalScoreText: {fileID: 780773114}
 --- !u!4 &379185720
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,7 +2118,7 @@ GameObject:
   - component: {fileID: 780773115}
   - component: {fileID: 780773114}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TotalScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2133,14 +2133,14 @@ RectTransform:
   m_GameObject: {fileID: 780773112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.175625, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 490004643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 105, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780773114
@@ -2172,8 +2172,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2190,8 +2190,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4085,7 +4085,7 @@ GameObject:
   - component: {fileID: 1772905628}
   - component: {fileID: 1772905627}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: FIKI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

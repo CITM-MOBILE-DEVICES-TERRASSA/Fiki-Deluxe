@@ -14,6 +14,8 @@ public class Score : MonoBehaviour
         timer = FindObjectOfType<Timer>(); // Encuentra el temporizador
         InitializeScoreText(); // Inicializa el marcador
         ResetScore(); // Reinicia el marcador al empezar
+
+        //UpdateLobbyScore(); falta acabar aquest + assembly
     }
 
     void Update()
