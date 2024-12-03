@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UpdateLobbyScore : MonoBehaviour
 {
@@ -14,10 +15,8 @@ public class UpdateLobbyScore : MonoBehaviour
     public TextMeshProUGUI JumpingJackText;  
     public TextMeshProUGUI TotalScoreText;
 
-    [HideInInspector]
-    public int Game1Score { get; private set; } //(Fiki)
-    [HideInInspector]
-    public int Game2Score { get; private set; } //(Jumping Jack)
+    [HideInInspector] public int Game1Score { get; private set; } //(Fiki)
+    [HideInInspector] public int Game2Score { get; private set; } //(Jumping Jack)
 
     private void Awake()
     {
@@ -25,7 +24,7 @@ public class UpdateLobbyScore : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);//si quisieramos q algo persista entre escenas modificar o eliminar esto
+            //DontDestroyOnLoad(gameObject);//si quisieramos q algo persista entre escenas modificar o eliminar esto
         }
         else
         {
@@ -39,10 +38,28 @@ public class UpdateLobbyScore : MonoBehaviour
         UpdateScoreTotal();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        ShowScoreTexts();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "LobbyScene")
+        {
+            AssignReferences();
+        }
+    }
+
+    //private void Update()
+    //{
+    //    ShowScoreTexts();
+    //}
         
     public void UpdateGame1Score(int newScore)
     {
@@ -57,59 +74,58 @@ public class UpdateLobbyScore : MonoBehaviour
         Debug.Log("Puntuación de Jumping Jack actualizada: " + Game2Score);
         UpdateScoreTotal();
     }
-        
-    private void ShowScoreTexts()
+
+    private void AssignReferences()
     {
-        if (FikiText != null)
+        GameObject fikiTextObject = GameObject.Find("FikiText");
+        if (fikiTextObject != null)
         {
-            FikiText.text = "Fiki: " + Game1Score;
+            FikiText = fikiTextObject.GetComponent<TextMeshProUGUI>();
         }
         else
         {
-            Debug.LogError("FikiText no está asignado en el inspector.");
+            Debug.LogError("No se encontró el objeto FikiText en la escena.");
         }
 
-        if (JumpingJackText != null)
+        GameObject jumpingJackTextObject = GameObject.Find("JumpingJackText");
+        if (jumpingJackTextObject != null)
         {
-            JumpingJackText.text = "JumpingJack: " + Game2Score;
+            JumpingJackText = jumpingJackTextObject.GetComponent<TextMeshProUGUI>();
         }
         else
         {
-            Debug.LogError("JumpingJackText no está asignado en el inspector.");
+            Debug.LogError("No se encontró el objeto JumpingJackText en la escena.");
         }
 
-        if (TotalScoreText != null)
+        GameObject totalScoreTextObject = GameObject.Find("TotalScoreText");
+        if (totalScoreTextObject != null)
         {
-            TotalScoreText.text = "Total Score: " + (Game1Score + Game2Score);
+            TotalScoreText = totalScoreTextObject.GetComponent<TextMeshProUGUI>();
         }
         else
         {
-            Debug.LogError("TotalScoreText no está asignado en el inspector.");
+            Debug.LogError("No se encontró el objeto TotalScoreText en la escena.");
         }
     }
-        
+
     private void UpdateScoreTotal()
     {
         int totalScore = Game1Score + Game2Score;
 
+        if (FikiText != null)
+        {
+            FikiText.text = "Fiki: " + Game1Score;
+        }
+        if (JumpingJackText != null)
+        {
+            JumpingJackText.text = "JumpingJack: " + Game2Score;
+        }
         if (TotalScoreText != null)
         {
             TotalScoreText.text = "Total Score: " + totalScore;
         }
 
         Debug.Log("Puntuación total actualizada: " + totalScore);
-    }
-
-    private void AssignReferences()
-    {
-        if (FikiText == null)
-            FikiText = GameObject.Find("FikiText").GetComponent<TextMeshProUGUI>();
-
-        if (JumpingJackText == null)
-            JumpingJackText = GameObject.Find("JumpingJackText").GetComponent<TextMeshProUGUI>();
-
-        if (TotalScoreText == null)
-            TotalScoreText = GameObject.Find("TotalScoreText").GetComponent<TextMeshProUGUI>();
     }
 }
 
