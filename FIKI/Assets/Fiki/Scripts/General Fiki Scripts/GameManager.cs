@@ -67,7 +67,6 @@ public class Manager : MonoBehaviour
     public void Save()
     {
         Debug.Log("GAME SAVED");
-        ScoreData.Instance.SetHighScore(Game.Fiki, currentLevel, score);
         PlayerPrefs.SetInt("HighScore", maxscore);
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("CurrentLevel", currentLevel);
@@ -80,8 +79,6 @@ public class Manager : MonoBehaviour
         score = PlayerPrefs.GetInt("Score", 0);
         currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         lives = PlayerPrefs.GetInt("Lives", 0);
-        
-        maxscore = ScoreData.Instance.GetHighScore(Game.Fiki, currentLevel);
 
         Debug.Log("HighScore " + maxscore);
         Debug.Log("Score " + score);
