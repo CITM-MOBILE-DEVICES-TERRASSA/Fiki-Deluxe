@@ -92,9 +92,8 @@ public class Manager : MonoBehaviour
     public void GoToMenu()
     {
         Time.timeScale = 1;
-        //Save(); // revisqar com posar player`perfs o q 
-        SceneManager.LoadScene("LevelSelector");
         Save(); // revisqar com posar player`perfs o q 
+        SceneManager.LoadScene("LevelSelector");
     }
 
 }
