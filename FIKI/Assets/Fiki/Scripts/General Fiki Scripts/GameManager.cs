@@ -35,11 +35,29 @@ public class Manager : MonoBehaviour
     }
     private void Start()
     {
-       
         pauseCanvas.SetActive(false);
         currentLevelText.text = currentLevel.ToString();
-        
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (pauseCanvas == null) pauseCanvas = GameObject.Find("PauseCanvas");
+        pauseCanvas?.SetActive(false);
+
+        if (currentLevelText == null) currentLevelText = GameObject.Find("CurrentLevelText")?.GetComponent<TextMeshProUGUI>();
+        if (currentLevelText != null) currentLevelText.text = currentLevel.ToString();
+    }
+
     public void PauseisActive()
     {
         pauseCanvas.SetActive(true);
