@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject waterParticlesPrefab;
     private bool waterPlayedParticles = false; // Controla si las partículas ya se reprodujeron
 
+    private bool isDead = false;
+
     void Start()
     {
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
@@ -54,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
+
         if (!isMoving)
         {
             if (Input.GetMouseButtonDown(0))
@@ -201,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("¡El jugador ha muerto!");
         animator.Play("Player_Die");
+        isDead = true;
         Manager.instance.lives--;
         if (Manager.instance.lives > 0)
         {
@@ -232,6 +237,7 @@ private void OnTriggerEnter2D(Collider2D collision)
         AudioManager.instance.PlaySFX(winScreenFx);
         Manager.instance.hasPrice = false;
         LevelTransitionController.instance.StartTransition(4, 2);
+        isDead = false;
     }
 
     private void Lose()
@@ -243,6 +249,7 @@ private void OnTriggerEnter2D(Collider2D collision)
         Manager.instance.lives = 3;
         gridPosition = tilemap.WorldToCell(transform.position);
         AlignToGrid();
+        isDead = false;
     }
 
 
@@ -264,6 +271,7 @@ private void OnTriggerEnter2D(Collider2D collision)
  
     private IEnumerator WaitAndDie(float duration)
     {
+        isDead = true;
         yield return new WaitForSeconds(duration); // Espera el tiempo especificado
         Die(); // Llama a Die después de la espera
     }
