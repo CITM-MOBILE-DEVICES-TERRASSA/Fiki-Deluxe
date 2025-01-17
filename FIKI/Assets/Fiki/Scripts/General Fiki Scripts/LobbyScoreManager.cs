@@ -24,7 +24,7 @@ public class UpdateLobbyScore : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);//si quisieramos q algo persista entre escenas modificar o eliminar esto
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
