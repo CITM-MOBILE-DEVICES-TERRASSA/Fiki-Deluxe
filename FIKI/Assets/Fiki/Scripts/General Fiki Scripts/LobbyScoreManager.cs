@@ -64,47 +64,37 @@ public class UpdateLobbyScore : MonoBehaviour
     public void UpdateGame1Score(int newScore)
     {
         Game1Score = newScore;
-        Debug.Log("Puntuación de FIKI actualizada: " + Game1Score);
+        Debug.Log("Puntuacion de FIKI actualizada: " + Game1Score);
         UpdateScoreTotal();
     }
         
     public void UpdateGame2Score(int newScore)
     {
         Game2Score = newScore;
-        Debug.Log("Puntuación de Jumping Jack actualizada: " + Game2Score);
+        Debug.Log("Puntuacion de Jumping Jack actualizada: " + Game2Score);
         UpdateScoreTotal();
     }
 
     private void AssignReferences()
     {
-        GameObject fikiTextObject = GameObject.Find("FikiText");
-        if (fikiTextObject != null)
+        Dictionary<string, Action<TextMeshProUGUI>> uiElements = new Dictionary<string, Action<TextMeshProUGUI>>()
         {
-            FikiText = fikiTextObject.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            Debug.LogError("No se encontró el objeto FikiText en la escena.");
-        }
+            { "FikiText", (component) => FikiText = component },
+            { "JumpingJackText", (component) => JumpingJackText = component },
+            { "TotalScoreText", (component) => TotalScoreText = component }
+        };
 
-        GameObject jumpingJackTextObject = GameObject.Find("JumpingJackText");
-        if (jumpingJackTextObject != null)
+        foreach (var element in uiElements)
         {
-            JumpingJackText = jumpingJackTextObject.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            Debug.LogError("No se encontró el objeto JumpingJackText en la escena.");
-        }
-
-        GameObject totalScoreTextObject = GameObject.Find("TotalScoreText");
-        if (totalScoreTextObject != null)
-        {
-            TotalScoreText = totalScoreTextObject.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            Debug.LogError("No se encontró el objeto TotalScoreText en la escena.");
+            GameObject uiObject = GameObject.Find(element.Key);
+            if (uiObject != null)
+            {
+                element.Value(uiObject.GetComponent<TextMeshProUGUI>());
+            }
+            else
+            {
+                Debug.LogError($"No se encontro el objeto {element.Key} en la escena.");
+            }
         }
     }
 
@@ -125,7 +115,7 @@ public class UpdateLobbyScore : MonoBehaviour
             TotalScoreText.text = "Total Score: " + totalScore;
         }
 
-        Debug.Log("Puntuación total actualizada: " + totalScore);
+        Debug.Log("Puntuacion total actualizada: " + totalScore);
     }
 }
 
