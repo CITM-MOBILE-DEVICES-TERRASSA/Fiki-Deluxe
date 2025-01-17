@@ -9,6 +9,8 @@ public class LevelTransitionController : MonoBehaviour
 
     public Image fadeImage;
 
+    private bool isTransitioning = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -25,11 +27,16 @@ public class LevelTransitionController : MonoBehaviour
 
     public void StartTransition(int sceneLevel, float time)
     {
-        StartCoroutine(Transition(sceneLevel, time));
+        if (!isTransitioning)
+        {
+            StartCoroutine(Transition(sceneLevel, time));
+        }
     }
 
     private IEnumerator Transition(int sceneLevel, float time)
     {
+        isTransitioning = true;
+
         // Fundido a negro
         yield return Fade(1, time);
 
@@ -38,6 +45,8 @@ public class LevelTransitionController : MonoBehaviour
 
         // Fundido a transparente
         yield return Fade(0, time);
+
+        isTransitioning = false;
     }
 
     private IEnumerator Fade(float targetAlpha, float time)
