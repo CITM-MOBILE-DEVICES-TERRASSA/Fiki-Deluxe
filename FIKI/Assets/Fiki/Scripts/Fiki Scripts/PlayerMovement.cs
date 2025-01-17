@@ -77,11 +77,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         CheckPlayerOnWater();
-
-        if (Manager.instance.lives <= 0)
-        {
-            Lose();
-        }    
     }
 
     private void DetectSwipeDirection()
@@ -210,11 +205,15 @@ public class PlayerMovement : MonoBehaviour
         if (Manager.instance.lives > 0)
         {
             AudioManager.instance.PlaySFX(lifeLostFx);
+            Manager.instance.hasPrice = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
         }
-        Manager.instance.hasPrice = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
+        else if (Manager.instance.lives <= 0)
+        {
+            Lose();
+        }
     }
 
 private void OnCollisionEnter2D(Collision2D collision)
