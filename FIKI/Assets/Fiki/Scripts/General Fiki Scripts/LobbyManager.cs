@@ -38,7 +38,6 @@ public class LobbyManager : MonoBehaviour
         happinessText.text = happiness + "%";
         sleepText.text = sleep + "%";
         hygieneText.text = hygiene + "%";
-        coinsText.text = coins.ToString("F3");
     }
 
 
@@ -46,5 +45,8 @@ public class LobbyManager : MonoBehaviour
     {
         LevelTransitionController.instance.StartTransition(3, 2);
     }
-
+    public void SelectorButton()
+    {
+        LevelTransitionController.instance.StartTransition(1, 2);
+    }
 }

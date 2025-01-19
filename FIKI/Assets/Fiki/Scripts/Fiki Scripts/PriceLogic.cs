@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ public class PriceLogic : MonoBehaviour
 {
     public AudioClip itemCollected; // Arrastra tu clip de audio aquí en el Inspector
     public GameObject collectParticlesPrefab; // Prefab de partículas para la recogida
-
+    [SerializeField] private TimerScript timer;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -15,7 +16,7 @@ public class PriceLogic : MonoBehaviour
             Debug.Log("Price has been taken!");
 
             AudioManager.instance.PlaySFX(itemCollected);
-
+            Manager.instance.score += 100 + 2 * (int)timer.timeRemaining;
             // Reproducir partículas de recolección
             if (collectParticlesPrefab != null)
             {

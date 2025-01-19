@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private Vector2 startMousePosition;
     private Vector2 endMousePosition;
+    private Vector2 startPosition;
     private GameObject winScreen;
     private GameObject gameOverScreen;
     private Animator animator;
@@ -34,8 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDead = false;
 
+    [SerializeField] private TimerScript timer;
     void Start()
     {
+        startPosition = new Vector2(transform.position.x, transform.position.y);
         gridPosition = tilemap.WorldToCell(transform.position); // Calcula la posici�n inicial en la cuadr�cula
         AlignToGrid(); // Alinea al jugador al centro de la celda
         animator = GetComponent<Animator>();
@@ -196,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("¡El jugador ha muerto!");
         animator.Play("Player_Die");
@@ -206,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioManager.instance.PlaySFX(lifeLostFx);
             Manager.instance.hasPrice = false;
+            transform.position = startPosition;
             UnityEngine.SceneManagement.SceneManager.LoadScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
             );
@@ -235,11 +239,12 @@ private void OnTriggerEnter2D(Collider2D collision)
         winScreen.SetActive(true);
         AudioManager.instance.PlaySFX(winScreenFx);
         Manager.instance.hasPrice = false;
+        Manager.instance.score += 100 + 2 * (int)timer.timeRemaining;
         LevelTransitionController.instance.StartTransition(4, 2);
         isDead = false;
     }
 
-    private void Lose()
+    public void Lose()
     {
         Debug.Log("You lost");
         gameOverScreen.SetActive(true);

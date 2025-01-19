@@ -97199,6 +97199,7 @@ MonoBehaviour:
   lifeLostFx: {fileID: 8300000, guid: e774c9d58b561944480ad639503c9f9c, type: 3}
   walkParticlesPrefab: {fileID: 2845967905212262544, guid: fd0eea91b8f103c4499cee6ccd93609c, type: 3}
   waterParticlesPrefab: {fileID: 163911815680352766, guid: e318559417b839b47989a0aface482fa, type: 3}
+  timer: {fileID: 1754884163}
 --- !u!212 &1328086939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98978,6 +98979,7 @@ GameObject:
   - component: {fileID: 1754884161}
   - component: {fileID: 1754884160}
   - component: {fileID: 1754884163}
+  - component: {fileID: 1754884164}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -99049,7 +99051,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRemaining: 300
   timerIsRunning: 0
+  playerMovement: {fileID: 0}
   timerText: {fileID: 1734949378}
+--- !u!114 &1754884164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754884159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90edeb126293d424f9dbd1ebe4113e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FikiText: {fileID: 0}
+  JumpingJackText: {fileID: 0}
+  TotalScoreText: {fileID: 0}
 --- !u!1 &1829613431
 GameObject:
   m_ObjectHideFlags: 0
@@ -120270,6 +120288,67 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1946283051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 143944987566410231, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1754884163}
+    - target: {fileID: 3597094582373614124, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_Name
+      value: Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778563691094237653, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
 --- !u!1 &2005937532
 GameObject:
   m_ObjectHideFlags: 0
@@ -141951,3 +142030,4 @@ SceneRoots:
   - {fileID: 1727250742}
   - {fileID: 725554930}
   - {fileID: 1439735777}
+  - {fileID: 1946283051}

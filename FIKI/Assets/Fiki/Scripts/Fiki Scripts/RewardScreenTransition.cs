@@ -8,8 +8,16 @@ public class RewardScreenTransition : MonoBehaviour
     // Start is called before the first frame update
      public Button playAgain;
      public Button returnMenu;
+    [SerializeField] private Lobby_Score lobby_Score;
     void Start()
     {
+        
+        if (Manager.instance.score > Manager.instance.maxscore)
+        {
+            Manager.instance.maxscore = Manager.instance.score;
+            lobby_Score.HighScore.text = Manager.instance.maxscore.ToString();
+        }
+        Manager.instance.coins += Manager.instance.score;
         if (playAgain != null)
             playAgain.onClick.AddListener(PlayAgain);
         else
@@ -28,11 +36,14 @@ public class RewardScreenTransition : MonoBehaviour
     }
 
     public void PlayAgain() {
+        
+        Manager.instance.score = 0;
         LevelTransitionController.instance.StartTransition(3, 2);
     }
 
     public void RetunMenu() {
-
+        
+        Manager.instance.score = 0;
         LevelTransitionController.instance.StartTransition(2, 2);
     }
 

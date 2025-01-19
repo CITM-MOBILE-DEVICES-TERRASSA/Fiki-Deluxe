@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     public int lives = 3;
     public int score;
     public int maxscore;
+    public int coins;
     public int currentLevel;
     public bool hasPrice=false;
 
@@ -85,8 +86,8 @@ public class Manager : MonoBehaviour
     public void Save()
     {
         Debug.Log("GAME SAVED");
-        PlayerPrefs.SetInt("HighScore", maxscore);
-        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetFloat("HighScore", maxscore);
+        PlayerPrefs.SetFloat("Score", score);
         PlayerPrefs.SetInt("CurrentLevel", currentLevel);
         PlayerPrefs.SetInt("Lives", lives);
     }

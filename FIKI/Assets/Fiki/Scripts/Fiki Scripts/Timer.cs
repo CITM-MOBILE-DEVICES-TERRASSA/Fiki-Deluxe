@@ -6,7 +6,7 @@ public class TimerScript : MonoBehaviour
     [Header("Configuración del Temporizador")]
     public float timeRemaining = 300f;
     public bool timerIsRunning = false;
-
+    public PlayerMovement playerMovement;
     [Header("UI")]
     public TextMeshProUGUI timerText;
 
@@ -20,6 +20,7 @@ public class TimerScript : MonoBehaviour
 
         timerIsRunning = true;
         UpdateTimerDisplay();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -51,6 +52,7 @@ public class TimerScript : MonoBehaviour
 
     private void OnTimerEnd()
     {
+        playerMovement.Lose();
         Debug.Log("¡Tiempo agotado!");
         
     }
