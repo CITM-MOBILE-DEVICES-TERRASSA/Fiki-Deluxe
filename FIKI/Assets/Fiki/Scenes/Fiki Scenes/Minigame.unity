@@ -98980,6 +98980,7 @@ GameObject:
   - component: {fileID: 1754884160}
   - component: {fileID: 1754884163}
   - component: {fileID: 1754884164}
+  - component: {fileID: 1754884165}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -99016,6 +99017,7 @@ MonoBehaviour:
   lives: 3
   score: 0
   maxscore: 0
+  coins: 0
   currentLevel: 0
   hasPrice: 0
   pauseCanvas: {fileID: 1829828798}
@@ -99060,7 +99062,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754884159}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90edeb126293d424f9dbd1ebe4113e8b, type: 3}
   m_Name: 
@@ -99068,6 +99070,20 @@ MonoBehaviour:
   FikiText: {fileID: 0}
   JumpingJackText: {fileID: 0}
   TotalScoreText: {fileID: 0}
+--- !u!114 &1754884165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754884159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba78c85752fb944cacd44f764c4d51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 309914863}
+  HighScore: {fileID: 1903755254}
 --- !u!1 &1829613431
 GameObject:
   m_ObjectHideFlags: 0

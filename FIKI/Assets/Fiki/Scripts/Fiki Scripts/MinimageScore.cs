@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Lobby_Score : MonoBehaviour
+public class MinimageScore : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI score;
     [SerializeField] public TextMeshProUGUI HighScore;
-    [SerializeField] public TextMeshProUGUI Coins;
-    
+
+
     void Start()
+    {
+        UpdateScores();
+    }
+    private void Update()
     {
         UpdateScores();
     }
@@ -28,10 +31,5 @@ public class Lobby_Score : MonoBehaviour
         if (HighScore != null)
             HighScore.text = Manager.instance.maxscore.ToString();
 
-        if (Coins != null)
-        {
-            Coins.text = Manager.instance.coins.ToString();
-            
-        }
     }
 }

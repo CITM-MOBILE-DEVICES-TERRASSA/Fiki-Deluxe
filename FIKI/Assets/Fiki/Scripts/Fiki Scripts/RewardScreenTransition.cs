@@ -36,7 +36,7 @@ public class RewardScreenTransition : MonoBehaviour
     }
 
     public void PlayAgain() {
-        
+       
         Manager.instance.score = 0;
         LevelTransitionController.instance.StartTransition(3, 2);
     }

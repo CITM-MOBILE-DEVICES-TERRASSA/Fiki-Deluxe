@@ -11,7 +11,7 @@ public class Manager : MonoBehaviour
     public int lives = 3;
     public int score;
     public int maxscore;
-    public int coins;
+    public int coins = 0;
     public int currentLevel;
     public bool hasPrice=false;
 
@@ -39,7 +39,13 @@ public class Manager : MonoBehaviour
         pauseCanvas.SetActive(false);
         currentLevelText.text = currentLevel.ToString();
     }
-
+    private void Update()
+    {
+        if(score >maxscore)
+        {
+            maxscore = score;
+        }
+    }
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
