@@ -4371,7 +4371,7 @@ RectTransform:
   m_GameObject: {fileID: 1813368007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2617, y: 1.2617, z: 1.2617}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827631362}
@@ -4794,7 +4794,7 @@ GameObject:
   - component: {fileID: 2065813763}
   - component: {fileID: 2065813762}
   m_Layer: 5
-  m_Name: Atras
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4839,7 +4839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Atr\xE1s\n"
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
   m_sharedMaterial: {fileID: -2076542180396658993, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
