@@ -205,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
         "Outdoor Tile Spritesheet_33",
         "Outdoor Tile Spritesheet_34"
     };
+        Debug.Log(tile.name);
         // Verifica si el tile es "Water_0" y aún no ha jugado partículas
         if (tile != null && System.Array.Exists(waterTiles, tileName => tile.name == tileName) && !waterPlayedParticles)
         {
