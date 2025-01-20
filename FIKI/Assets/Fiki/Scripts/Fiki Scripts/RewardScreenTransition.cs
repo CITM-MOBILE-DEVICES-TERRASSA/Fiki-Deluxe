@@ -17,7 +17,12 @@ public class RewardScreenTransition : MonoBehaviour
             Manager.instance.maxscore = Manager.instance.score;
             lobby_Score.HighScore.text = Manager.instance.maxscore.ToString();
         }
+
         Manager.instance.coins += Manager.instance.score;
+        Debug.Log("Coins: " + Manager.instance.coins);
+        Debug.Log("Coins: " + Manager.instance.score);
+        UpdateLobbyScore.Instance.UpdateGame1Score(Manager.instance.score);
+
         if (playAgain != null)
             playAgain.onClick.AddListener(PlayAgain);
         else

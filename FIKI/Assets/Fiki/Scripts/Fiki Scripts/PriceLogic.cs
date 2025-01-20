@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class PriceLogic : MonoBehaviour
 {
-    public AudioClip itemCollected; // Arrastra tu clip de audio aquí en el Inspector
-    public GameObject collectParticlesPrefab; // Prefab de partículas para la recogida
+    public AudioClip itemCollected;
+    public GameObject collectParticlesPrefab;
     [SerializeField] private TimerScript timer;
+
+    private void Start()
+    {
+        timer = FindObjectOfType<TimerScript>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -17,12 +23,11 @@ public class PriceLogic : MonoBehaviour
 
             AudioManager.instance.PlaySFX(itemCollected);
             Manager.instance.score += 100 + 2 * (int)timer.timeRemaining;
-            // Reproducir partículas de recolección
+
             if (collectParticlesPrefab != null)
             {
                 GameObject particles = Instantiate(collectParticlesPrefab, transform.position, Quaternion.identity);
 
-                // Obtener el sistema de partículas y destruirlo después de su duración
                 ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
                 if (particleSystem != null)
                 {
@@ -30,15 +35,14 @@ public class PriceLogic : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("El prefab de partículas no tiene un sistema de partículas.");
+                    Debug.LogWarning("El prefab de particulas no tiene un sistema de particulas.");
                 }
             }
             else
             {
-                Debug.LogWarning("Prefab de partículas no asignado en el inspector.");
+                Debug.LogWarning("Prefab de particulas no asignado en el inspector.");
             }
 
-            // Desactiva la manzana
             gameObject.SetActive(false);
         }
     }

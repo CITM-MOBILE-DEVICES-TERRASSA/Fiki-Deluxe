@@ -50,9 +50,10 @@ public class UpdateLobbyScore : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "LobbyScene")
+        if (scene.name == "LobbyScene" || scene.name == "LevelSelector")
         {
             AssignReferences();
+            UpdateScoreTotal();
         }
     }
 

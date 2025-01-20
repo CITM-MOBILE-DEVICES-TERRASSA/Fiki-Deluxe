@@ -3,7 +3,7 @@ using TMPro;
 
 public class TimerScript : MonoBehaviour
 {
-    [Header("Configuración del Temporizador")]
+    [Header("Configuraciï¿½n del Temporizador")]
     public float timeRemaining = 300f;
     public bool timerIsRunning = false;
     public PlayerMovement playerMovement;
@@ -14,7 +14,7 @@ public class TimerScript : MonoBehaviour
     {
         if (timerText == null)
         {
-            Debug.LogError("No se asignó el TextMeshProUGUI en el campo 'Timer Text' del Inspector.");
+            Debug.LogError("No se asignï¿½ el TextMeshProUGUI en el campo 'Timer Text' del Inspector.");
             return;
         }
 
@@ -43,7 +43,7 @@ public class TimerScript : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        Debug.Log($"Actualizando texto: {timeRemaining}");
+        //Debug.Log($"Actualizando texto: {timeRemaining}");
         if (timerText != null)
         {
             timerText.text = Mathf.Ceil(timeRemaining).ToString(); 
@@ -53,7 +53,7 @@ public class TimerScript : MonoBehaviour
     private void OnTimerEnd()
     {
         playerMovement.Lose();
-        Debug.Log("¡Tiempo agotado!");
+        //Debug.Log("ï¿½Tiempo agotado!");
         
     }
 }

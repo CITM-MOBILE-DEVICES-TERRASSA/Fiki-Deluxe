@@ -9,6 +9,7 @@ public class SelectorScore : MonoBehaviour
     [SerializeField] public TextMeshProUGUI FikiScore;
     [SerializeField] public TextMeshProUGUI JumpingJackScore;
     [SerializeField] public TextMeshProUGUI TotalScore;
+
     void Update()
     {
         if (Manager.instance == null)
@@ -26,6 +27,4 @@ public class SelectorScore : MonoBehaviour
         }
         
     }
-
-   
 }

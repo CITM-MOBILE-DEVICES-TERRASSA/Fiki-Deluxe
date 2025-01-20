@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         if (gameOverScreen) gameOverScreen.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
+
+        timer = FindObjectOfType<TimerScript>();
     }
 
     public void SetGridPosition(Vector3Int newGridPosition)
