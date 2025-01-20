@@ -231,7 +231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.500061, y: 66}
+  m_AnchoredPosition: {x: -12.500061, y: 137}
   m_SizeDelta: {x: 652.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622493737
@@ -256,15 +256,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: FIKI
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
-  m_sharedMaterial: {fileID: -2076542180396658993, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9d1f790661049948806d2814f3154d7, type: 2}
+  m_sharedMaterial: {fileID: 2744004482652458312, guid: b9d1f790661049948806d2814f3154d7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289024046
-  m_fontColor: {r: 0.1789747, g: 0.3124207, b: 0.645283, a: 1}
+    rgba: 4287051284
+  m_fontColor: {r: 0.07843136, g: 0.21260886, b: 0.5294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -660,7 +660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.500061, y: -341}
+  m_AnchoredPosition: {x: -12.500061, y: -124}
   m_SizeDelta: {x: 652.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017613676
@@ -685,8 +685,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CITM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
-  m_sharedMaterial: {fileID: -2076542180396658993, guid: c09091d08af478345a3b365d4c5c35e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9d1f790661049948806d2814f3154d7, type: 2}
+  m_sharedMaterial: {fileID: 2744004482652458312, guid: b9d1f790661049948806d2814f3154d7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
