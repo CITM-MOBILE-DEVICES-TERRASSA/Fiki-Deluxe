@@ -44,10 +44,10 @@ public class LobbyManager : MonoBehaviour
     public void PlayButton()
     {
         
-        LevelTransitionController.instance.StartTransition(3, 2);
+        LevelTransitionController.instance.StartTransition(3, 0.5f);
     }
     public void SelectorButton()
     {
-        LevelTransitionController.instance.StartTransition(1, 2);
+        LevelTransitionController.instance.StartTransition(1, 0.5f);
     }
 }

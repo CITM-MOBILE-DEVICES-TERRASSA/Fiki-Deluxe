@@ -38,13 +38,13 @@ public class RewardScreenTransition : MonoBehaviour
     public void PlayAgain() {
        
         Manager.instance.score = 0;
-        LevelTransitionController.instance.StartTransition(3, 2);
+        LevelTransitionController.instance.StartTransition(3, 0.5f);
     }
 
     public void RetunMenu() {
         
         Manager.instance.score = 0;
-        LevelTransitionController.instance.StartTransition(2, 2);
+        LevelTransitionController.instance.StartTransition(2, 0.5f);
     }
 
 }

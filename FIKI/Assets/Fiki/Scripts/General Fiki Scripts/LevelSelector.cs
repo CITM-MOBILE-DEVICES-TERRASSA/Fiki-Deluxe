@@ -16,12 +16,12 @@ public class LevelSelector : MonoBehaviour
 
     public void Minigame1()
     {
-        LevelTransitionController.instance.StartTransition(2, 2);
+        LevelTransitionController.instance.StartTransition(2, 0.5f);
     }
 
     public void Minigame2()
     {
-        LevelTransitionController.instance.StartTransition(5, 2);
+        LevelTransitionController.instance.StartTransition(5, 0.5f);
     }
 
     public void Minigame3()
