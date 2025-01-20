@@ -192,9 +192,21 @@ public class PlayerMovement : MonoBehaviour
 
         // Obtiene el tile en esa posición
         TileBase tile = tilemap.GetTile(playerCellPosition);
-
+        
+        // array que detecta todos los tiles que permiten muerte
+        string[] waterTiles = new string[] {
+        "Outdoor Tile Spritesheet_12",
+        "Outdoor Tile Spritesheet_13",
+        "Outdoor Tile Spritesheet_14",
+        "Outdoor Tile Spritesheet_23",
+        "Outdoor Tile Spritesheet_24",
+        "Outdoor Tile Spritesheet_25",
+        "Outdoor Tile Spritesheet_32",
+        "Outdoor Tile Spritesheet_33",
+        "Outdoor Tile Spritesheet_34"
+    };
         // Verifica si el tile es "Water_0" y aún no ha jugado partículas
-        if (tile != null && tile.name == "tileset_version1.1_93" && !waterPlayedParticles)
+        if (tile != null && System.Array.Exists(waterTiles, tileName => tile.name == tileName) && !waterPlayedParticles)
         {
             waterPlayedParticles = true; // Marca que las partículas ya se están reproduciendo
             PlayWaterParticles(); // Reproduce partículas y llama a Die después
