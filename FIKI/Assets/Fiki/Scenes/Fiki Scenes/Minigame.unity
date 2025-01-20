@@ -97195,7 +97195,7 @@ MonoBehaviour:
   moveSpeed: 10
   soundClip: {fileID: 8300000, guid: e5355bd80b8719d4c8e167b15477a41d, type: 3}
   winScreenFx: {fileID: 8300000, guid: a63e4ccece2c36142abde60397bc1c18, type: 3}
-  gameOverScreenFx: {fileID: 8300000, guid: 83774d3bd122c8a499de49005fd753f0, type: 3}
+  gameOverScreenFx: {fileID: 8300000, guid: 88e58217185eec74eac253eefc73f3ea, type: 3}
   lifeLostFx: {fileID: 8300000, guid: e774c9d58b561944480ad639503c9f9c, type: 3}
   walkParticlesPrefab: {fileID: 2845967905212262544, guid: fd0eea91b8f103c4499cee6ccd93609c, type: 3}
   waterParticlesPrefab: {fileID: 163911815680352766, guid: e318559417b839b47989a0aface482fa, type: 3}
@@ -118121,6 +118121,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1754884163}
+    - target: {fileID: 143944987566410231, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
+      propertyPath: itemCollected
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a247c4a8fd5b3c47b0656e729fcc722, type: 3}
     - target: {fileID: 3597094582373614124, guid: ec6ac92cfb9a60a41b1ddd80785b4a36, type: 3}
       propertyPath: m_Name
       value: Circle
