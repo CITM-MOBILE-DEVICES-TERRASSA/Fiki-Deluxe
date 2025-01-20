@@ -12,10 +12,12 @@ public class Lobby_Score : MonoBehaviour
     
     void Start()
     {
-        UpdateScores();
+        //UpdateScores();
     }
+
     private void UpdateScores()
     {
+        Debug.LogWarning("update scores");
         if (Manager.instance == null)
         {
             Debug.LogWarning("Manager instance is null!");

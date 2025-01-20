@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
 
     public int lives = 3;
     public int score;
-    public int maxscore;
+    public int maxscore = 0;
     public int coins = 0;
     public int currentLevel;
     public bool hasPrice=false;

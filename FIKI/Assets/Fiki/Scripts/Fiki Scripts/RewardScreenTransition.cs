@@ -9,18 +9,19 @@ public class RewardScreenTransition : MonoBehaviour
      public Button playAgain;
      public Button returnMenu;
     [SerializeField] private Lobby_Score lobby_Score;
+
     void Start()
     {
-        
+        Manager.instance.coins += Manager.instance.score;
+
+        lobby_Score.Coins.text = Manager.instance.coins.ToString();
+        lobby_Score.score.text = Manager.instance.score.ToString();
         if (Manager.instance.score > Manager.instance.maxscore)
         {
             Manager.instance.maxscore = Manager.instance.score;
             lobby_Score.HighScore.text = Manager.instance.maxscore.ToString();
         }
 
-        Manager.instance.coins += Manager.instance.score;
-        Debug.Log("Coins: " + Manager.instance.coins);
-        Debug.Log("Coins: " + Manager.instance.score);
         UpdateLobbyScore.Instance.UpdateGame1Score(Manager.instance.score);
 
         if (playAgain != null)
@@ -32,12 +33,6 @@ public class RewardScreenTransition : MonoBehaviour
             returnMenu.onClick.AddListener(RetunMenu);
         else
             Debug.LogWarning("Return Button is not assigned!");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlayAgain() {
