@@ -271,6 +271,10 @@ private void OnTriggerEnter2D(Collider2D collision)
         AudioManager.instance.PlaySFX(winScreenFx);
         Manager.instance.hasPrice = false;
         Manager.instance.score += 100 + 2 * (int)timer.timeRemaining;
+        if (Manager.instance.score > Manager.instance.maxscore)
+        {
+            Manager.instance.maxscore = Manager.instance.score;
+        }
         LevelTransitionController.instance.StartTransition(4, 2);
         isDead = false;
     }

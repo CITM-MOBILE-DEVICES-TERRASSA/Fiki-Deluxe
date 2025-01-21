@@ -22,6 +22,10 @@ public class RewardScreenTransition : MonoBehaviour
         scoreText.text = Manager.instance.score.ToString();
         highScoreText.text = Manager.instance.maxscore.ToString();
 
+        PlayerPrefs.SetInt("FikiScore", Manager.instance.score);
+        PlayerPrefs.SetInt("FikiHighScore", Manager.instance.maxscore);
+        PlayerPrefs.SetFloat("FikiCoins", Manager.instance.coins);
+
         UpdateLobbyScore.Instance.UpdateGame1Score(Manager.instance.score);
 
         if (playAgain != null)

@@ -11,6 +11,7 @@ public class LobbyManager : MonoBehaviour
     public TMP_Text sleepText;
     public TMP_Text hygieneText;
     public TMP_Text coinsText;
+    public TMP_Text scoreText;
 
     public int level = 0;
     public float hunger = 37f;
@@ -38,6 +39,8 @@ public class LobbyManager : MonoBehaviour
         happinessText.text = happiness + "%";
         sleepText.text = sleep + "%";
         hygieneText.text = hygiene + "%";
+        coinsText.text = PlayerPrefs.GetFloat("FikiCoins", 0).ToString();
+        scoreText.text = PlayerPrefs.GetInt("FikiHighScore", 0).ToString();
     }
 
 

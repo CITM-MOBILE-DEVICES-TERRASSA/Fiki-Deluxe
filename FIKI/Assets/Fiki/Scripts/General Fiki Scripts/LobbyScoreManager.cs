@@ -48,6 +48,9 @@ public class UpdateLobbyScore : MonoBehaviour
     {
         if (scene.name == "LobbyScene" || scene.name == "LevelSelector")
         {
+            UpdateGame1Score(PlayerPrefs.GetInt("FikiScore", 0));
+            UpdateGame2Score(PlayerPrefs.GetInt("JumpingJackScore", 0));
+
             AssignReferences();
             UpdateScoreTotal();
 
