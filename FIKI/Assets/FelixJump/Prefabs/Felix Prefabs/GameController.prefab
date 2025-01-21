@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7817368277182264252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9116057576742378532}
+  - component: {fileID: 2860553720067406826}
+  - component: {fileID: 3608338764134728550}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9116057576742378532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817368277182264252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 124, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2860553720067406826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817368277182264252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec75fdc1c36bf34fbf66d2e2189d005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cylinderSlider: {fileID: 0}
+  cylinder: {fileID: 0}
+  rotationSpeed: 60
+  endPanel: {fileID: 0}
+--- !u!114 &3608338764134728550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817368277182264252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e7f52707525a14b88905ad8569ac23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaFinal: {fileID: 503575421704478865, guid: d14d0a2c3e854074daf439ca7d56b04e,
+    type: 3}
+  plataforma1Hole: {fileID: 5047105649587176705, guid: f5a9a121f134d2b499820159d6328e47,
+    type: 3}
+  plataforma2Hole: {fileID: 7955264177824516381, guid: b16db945887cbfe4c91c42e341d66162,
+    type: 3}
+  ballPrefab: {fileID: 353864344936485748, guid: 4837c6fad35dac84e8e642b9b0f59ae5,
+    type: 3}
+  plataformaPinchos1Hole: {fileID: 5350833560861813502, guid: 09518e43d2fddf84282d9d962c8eed62,
+    type: 3}
+  plataformaPinchos2Hole: {fileID: 1066791729911798355, guid: 77311243428ab5245928e92c859c8e13,
+    type: 3}
+  plataformaPinchos1HoleVariant: {fileID: 5350833560861813502, guid: 09518e43d2fddf84282d9d962c8eed62,
+    type: 3}
+  plataformaPinchos2HoleVariant: {fileID: 1066791729911798355, guid: 77311243428ab5245928e92c859c8e13,
+    type: 3}
+  numeroPlataforma: 16
+  distanciaSpawn: 0.8
+  startingY: 0
+  leafSpawner: {fileID: 928102222790464432, guid: aaa1ca05570c5c643b4d3d3edb5f386b,
+    type: 3}
+  netGameObject: {fileID: 1745717280251669587, guid: 7672cc80168590b4384c2a104aa4e46a,
+    type: 3}
+  snowBallGameObject: {fileID: 0}
+  scytheGameObject: {fileID: 1745717280251669587, guid: 4b533b5b75857cc4b869d55ac80e76e2,
+    type: 3}
+  aparecerLeafes: 0
+  aparecerNets: 0
+  aparecerSnowBalls: 0
+  aparecerScythes: 0
