@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RewardScreenTransition : MonoBehaviour
 {
     // Start is called before the first frame update
-     public Button playAgain;
-     public Button returnMenu;
-    [SerializeField] private Lobby_Score lobby_Score;
+    public Button playAgain;
+    public Button returnMenu;
+
+    [SerializeField] public TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI highScoreText;
+    [SerializeField] public TextMeshProUGUI coinsText;
 
     void Start()
     {
         Manager.instance.coins += Manager.instance.score;
 
-        lobby_Score.Coins.text = Manager.instance.coins.ToString();
-        lobby_Score.score.text = Manager.instance.score.ToString();
-        if (Manager.instance.score > Manager.instance.maxscore)
-        {
-            Manager.instance.maxscore = Manager.instance.score;
-            lobby_Score.HighScore.text = Manager.instance.maxscore.ToString();
-        }
+        coinsText.text = Manager.instance.coins.ToString();
+        scoreText.text = Manager.instance.score.ToString();
+        highScoreText.text = Manager.instance.maxscore.ToString();
 
         UpdateLobbyScore.Instance.UpdateGame1Score(Manager.instance.score);
 

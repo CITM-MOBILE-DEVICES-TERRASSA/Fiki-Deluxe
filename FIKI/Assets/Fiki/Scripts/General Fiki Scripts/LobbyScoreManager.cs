@@ -80,8 +80,8 @@ public class UpdateLobbyScore : MonoBehaviour
     {
         Dictionary<string, Action<TextMeshProUGUI>> uiElements = new Dictionary<string, Action<TextMeshProUGUI>>()
         {
-            { "FikiText", (component) => FikiText = component },
-            { "JumpingJackText", (component) => JumpingJackText = component },
+            { "FikiScoreText", (component) => FikiText = component },
+            { "JumpingJackScoreText", (component) => JumpingJackText = component },
             { "TotalScoreText", (component) => TotalScoreText = component }
         };
 
