@@ -16,7 +16,7 @@ public class SpawnerScript : MonoBehaviour
 
     [Header("Spawn Settings")]
     public List<SpawnPoint> spawnPoints; // List of spawn points with their directions
-    public float spawnCooldown = 2f;
+    public float spawnCooldown = 1f;
 
     private float cooldownTimer;
 

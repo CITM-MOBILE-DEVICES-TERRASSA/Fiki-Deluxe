@@ -5,7 +5,7 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed = 5f;
+    public float speed = 4f;
 
     [Header("Lifetime Settings")]
     public float lifetime = 5f; // Tiempo de vida de la serpiente en segundos
