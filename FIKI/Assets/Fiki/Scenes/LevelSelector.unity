@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 38348846}
   - component: {fileID: 38348845}
   m_Layer: 5
-  m_Name: Jumping Jack
+  m_Name: Jumping Jack Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 92952040}
   - component: {fileID: 92952039}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Minigame Coming Soon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -45.84903, w: 0}
+  m_margin: {x: 0, y: 0, z: -45.84903, w: 22.241488}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1400,7 +1400,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 198.28867
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 603159437}
   - component: {fileID: 603159436}
   m_Layer: 5
-  m_Name: Atras
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,14 +2210,14 @@ RectTransform:
   m_GameObject: {fileID: 780773112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.175625, y: 1, z: 1}
+  m_LocalScale: {x: 1.2680414, y: 0.58284, z: 0.58284}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 490004643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 119.538, y: 9.692017}
+  m_AnchoredPosition: {x: 0.10000038, y: 9.692017}
   m_SizeDelta: {x: 13.3644, y: 19.384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780773114
@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 13.05724, y: 6.68417, z: 13.057362, w: -28.407719}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2405,7 +2405,7 @@ GameObject:
   - component: {fileID: 928746172}
   - component: {fileID: 928746171}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: Minigame Coming Soon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -45.84903, w: 0}
+  m_margin: {x: 0, y: 0, z: -45.84903, w: 26.689943}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2642,7 +2642,7 @@ GameObject:
   - component: {fileID: 1033721594}
   - component: {fileID: 1033721593}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Minigame Coming Soon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -45.84903, w: 0}
+  m_margin: {x: 0, y: 0, z: -45.84903, w: 21.685608}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2776,7 +2776,7 @@ GameObject:
   - component: {fileID: 1045544376}
   - component: {fileID: 1045544375}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Score Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2886,7 +2886,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 18.703781}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3785,7 +3785,7 @@ GameObject:
   - component: {fileID: 1401588169}
   - component: {fileID: 1401588168}
   m_Layer: 5
-  m_Name: Text (TMP) (5)
+  m_Name: Minigame Coming Soon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3893,7 +3893,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -45.84903, w: 0}
+  m_margin: {x: 0, y: 0, z: -45.84903, w: 23.90984}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4074,7 +4074,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 301.90686
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4161,7 +4161,7 @@ GameObject:
   - component: {fileID: 1772905628}
   - component: {fileID: 1772905627}
   m_Layer: 5
-  m_Name: FIKI
+  m_Name: Fiki Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4269,7 +4269,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 26.68978}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4876,7 +4876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 6.3}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065813762
@@ -4962,7 +4962,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -12.692905, y: 0, z: -13.018234, w: -14.645513}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
