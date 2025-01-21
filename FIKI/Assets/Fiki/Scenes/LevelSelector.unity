@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 92952040}
   - component: {fileID: 92952039}
   m_Layer: 5
-  m_Name: MinigameComingSoon
+  m_Name: FelixJumpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Minigame: Coming soon!'
+  m_text: 'Felix jump: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9d1f790661049948806d2814f3154d7, type: 2}
   m_sharedMaterial: {fileID: 2744004482652458312, guid: b9d1f790661049948806d2814f3154d7, type: 2}
@@ -1142,7 +1142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FikiText: {fileID: 1772905627}
   JumpingJackText: {fileID: 38348845}
-  TotalScoreText: {fileID: 0}
+  FelixJumpText: {fileID: 92952039}
+  TotalScoreText: {fileID: 1228359971}
 --- !u!4 &379185720
 Transform:
   m_ObjectHideFlags: 0

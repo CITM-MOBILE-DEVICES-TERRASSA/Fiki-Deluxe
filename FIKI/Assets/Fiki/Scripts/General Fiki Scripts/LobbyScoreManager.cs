@@ -12,11 +12,14 @@ public class UpdateLobbyScore : MonoBehaviour
 
     [Header("UI Elements")]
     public TextMeshProUGUI FikiText;          
-    public TextMeshProUGUI JumpingJackText;  
+    public TextMeshProUGUI JumpingJackText;
+    public TextMeshProUGUI FelixJumpText;
     public TextMeshProUGUI TotalScoreText;
 
     [HideInInspector] public int Game1Score { get; private set; } //(Fiki)
     [HideInInspector] public int Game2Score { get; private set; } //(Jumping Jack)
+
+    [HideInInspector] public int Game3Score { get; private set; }
 
     private GameObject scoreCanvas;
 
@@ -77,7 +80,12 @@ public class UpdateLobbyScore : MonoBehaviour
         Debug.Log("Puntuacion de Jumping Jack actualizada: " + Game2Score);
         UpdateScoreTotal();
     }
-
+    public void UpdateGame3Score(int newScore)
+    {
+        Game3Score = newScore;
+        Debug.Log("Puntuacion de Felix Jump actualizada: " + Game3Score);
+        UpdateScoreTotal();
+    }
     private void AssignReferences()
     {
         Dictionary<string, Action<TextMeshProUGUI>> uiElements = new Dictionary<string, Action<TextMeshProUGUI>>()
@@ -114,6 +122,10 @@ public class UpdateLobbyScore : MonoBehaviour
         if (JumpingJackText != null)
         {
             JumpingJackText.text = "JumpingJack: " + Game2Score;
+        }
+        if (FelixJumpText != null)
+        {
+            FelixJumpText.text = "FelixJump " + Game3Score;
         }
         if (TotalScoreText != null)
         {

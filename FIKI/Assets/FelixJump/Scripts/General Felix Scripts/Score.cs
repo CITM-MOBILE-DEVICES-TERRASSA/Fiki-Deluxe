@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class Score : MonoBehaviour
 {
@@ -100,6 +101,7 @@ public class Score : MonoBehaviour
                 {
                     maxSpringScore = springScore;
                     PlayerPrefs.SetInt("MaxSpringScore", maxSpringScore);
+                    UpdateLobbyScore.Instance.UpdateGame3Score(PlayerPrefs.GetInt("MaxSpringScore"));
                     maxScoreUpdated = true;
                 }
                 break;
