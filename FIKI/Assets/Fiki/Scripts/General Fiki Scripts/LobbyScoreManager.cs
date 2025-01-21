@@ -18,6 +18,8 @@ public class UpdateLobbyScore : MonoBehaviour
     [HideInInspector] public int Game1Score { get; private set; } //(Fiki)
     [HideInInspector] public int Game2Score { get; private set; } //(Jumping Jack)
 
+    private GameObject scoreCanvas;
+
     private void Awake()
     {
         //Singleton
@@ -30,12 +32,6 @@ public class UpdateLobbyScore : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        AssignReferences();
-        UpdateScoreTotal();
     }
 
     private void OnEnable()
@@ -54,6 +50,9 @@ public class UpdateLobbyScore : MonoBehaviour
         {
             AssignReferences();
             UpdateScoreTotal();
+
+            if (scoreCanvas != null)
+                scoreCanvas.SetActive(false);
         }
     }
 
@@ -97,6 +96,8 @@ public class UpdateLobbyScore : MonoBehaviour
                 Debug.LogError($"No se encontro el objeto {element.Key} en la escena.");
             }
         }
+
+        scoreCanvas = GameObject.Find("Puntuacion_Canvas");
     }
 
     private void UpdateScoreTotal()
