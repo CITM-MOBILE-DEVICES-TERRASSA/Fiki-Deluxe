@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap tilemap;           // Tilemap que contiene todos los tiles
     public float moveSpeed = 10.0f;   // Velocidad del jugador
 
+    private bool hasPowerUp = false;
+    private float powerUpTimeRemaining = 0f;
+
     private Vector3Int gridPosition;  // Posici�n actual del jugador en la cuadr�cula
     private Vector3 targetWorldPosition;
     private bool isMoving = false;
@@ -100,12 +103,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (swipeDelta.x > 0)
                 {
-                    direction = Vector3Int.right;
+                    direction = Vector3Int.right * (hasPowerUp ? 2 : 1);
                     transform.localScale = new Vector3(3, 3, 3);
                 }
                 else
                 {
-                    direction = Vector3Int.left;
+                    direction = Vector3Int.left * (hasPowerUp ? 2 : 1);
                     transform.localScale = new Vector3(-3, 3, 3);
                 }
             }
@@ -113,24 +116,37 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (swipeDelta.y > 0)
                 {
-                    direction = Vector3Int.up;
+                    direction = Vector3Int.up * (hasPowerUp ? 2 : 1);
                 }
                 else
                 {
-                    direction = Vector3Int.down;
+                    direction = Vector3Int.down * (hasPowerUp ? 2 : 1);
                 }
             }
 
             // Calcula la nueva posici�n en la cuadr�cula
+            Vector3Int intermediatePosition = gridPosition + (direction / 2);
             Vector3Int newGridPosition = gridPosition + direction;
 
-            if (!IsMovementBlocked(newGridPosition))
+            if (hasPowerUp)
             {
-                gridPosition = newGridPosition;
-                targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
-                isMoving = true;
-                animator.Play("Player_Walk");
-                return;
+                if (!IsMovementBlocked(intermediatePosition) && !IsMovementBlocked(newGridPosition))
+                {
+                    gridPosition = newGridPosition;
+                    targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
+                    isMoving = true;
+                    animator.Play("Player_Walk");
+                }
+            }
+            else
+            {
+                if (!IsMovementBlocked(newGridPosition))
+                {
+                    gridPosition = newGridPosition;
+                    targetWorldPosition = tilemap.GetCellCenterWorld(gridPosition);
+                    isMoving = true;
+                    animator.Play("Player_Walk");
+                }
             }
         }
     }
@@ -326,9 +342,6 @@ private void OnTriggerEnter2D(Collider2D collision)
             Die(); // Llama a Die inmediatamente si no hay prefab
         }
     }
-
-    
-
     public void PlayWalkParticles()
     {
         // Instancia partículas en la posición actual
@@ -354,5 +367,20 @@ private void OnTriggerEnter2D(Collider2D collision)
 
     }
 
+    public void ActivateDoubleJump(float duration)
+    {
+        hasPowerUp = true;
+        powerUpTimeRemaining = duration;
+        StartCoroutine(PowerUpCountdown());
+    }
+    private IEnumerator PowerUpCountdown()
+    {
+        while (powerUpTimeRemaining > 0)
+        {
+            powerUpTimeRemaining -= Time.deltaTime;
+            yield return null;
+        }
+        hasPowerUp = false;
+    }
 
 }
