@@ -31,13 +31,8 @@ public class GameHUD : MonoBehaviour
 
     public void ChangeToMenu()
     {
-        if (ScenesManager.Instance == null)
-        {
-            Debug.LogError("ScenesManager.Instance is null! Ensure ScenesManager exists in the scene.");
-            return;
-        }
-
-        ScenesManager.Instance.LoadScene("GameSelector");
+        
+        LevelTransitionController.instance.StartTransition(9, 0.5f);
         // Score.Instance.SetAddScore(false);
     }
 }
