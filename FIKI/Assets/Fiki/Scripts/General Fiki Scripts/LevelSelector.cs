@@ -36,7 +36,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Minigame5()
     {
-        // Implementar l�gica para Minigame5
+        LevelTransitionController.instance.StartTransition(13, 0.5f);
     }
 
     public void Minigame6()

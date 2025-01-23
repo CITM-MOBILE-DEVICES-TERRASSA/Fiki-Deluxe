@@ -36,7 +36,11 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("CurrentLevel", level);
         PlayerPrefs.Save();
-        //SceneManager.LoadScene("GameP");
-        ColorsMagic.ChangeToScene("GameP");
+        SceneManager.LoadScene("GameP");
+       // ColorsMagic.ChangeToScene("GameP");
+    }
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

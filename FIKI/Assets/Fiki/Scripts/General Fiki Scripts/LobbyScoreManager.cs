@@ -14,12 +14,15 @@ public class UpdateLobbyScore : MonoBehaviour
     public TextMeshProUGUI FikiText;          
     public TextMeshProUGUI JumpingJackText;
     public TextMeshProUGUI FelixJumpText;
+    public TextMeshProUGUI ColorsMagicText;
+    public TextMeshProUGUI VacacionesZaharaText;
     public TextMeshProUGUI TotalScoreText;
 
     [HideInInspector] public int Game1Score { get; private set; } //(Fiki)
     [HideInInspector] public int Game2Score { get; private set; } //(Jumping Jack)
-
-    [HideInInspector] public int Game3Score { get; private set; }
+    [HideInInspector] public int Game3Score { get; private set; } //(Felix Jump)
+    [HideInInspector] public int Game4Score { get; private set; } //(Colors Magic)
+    [HideInInspector] public int Game5Score { get; private set; } //(Vacaciones Zahara)
 
     private GameObject scoreCanvas;
 
@@ -53,6 +56,9 @@ public class UpdateLobbyScore : MonoBehaviour
         {
             UpdateGame1Score(PlayerPrefs.GetInt("FikiScore", 0));
             UpdateGame2Score(PlayerPrefs.GetInt("JumpingJackScore", 0));
+            UpdateGame3Score(PlayerPrefs.GetInt("FelixJumpScore", 0));
+            UpdateGame4Score(PlayerPrefs.GetInt("ColorsMagicScore", 0));
+            UpdateGame5Score(PlayerPrefs.GetInt("VacacionesZaharaScore", 0));
 
             AssignReferences();
             UpdateScoreTotal();
@@ -86,12 +92,30 @@ public class UpdateLobbyScore : MonoBehaviour
         Debug.Log("Puntuacion de Felix Jump actualizada: " + Game3Score);
         UpdateScoreTotal();
     }
+
+    public void UpdateGame4Score(int newScore)
+    {
+        Game4Score = newScore;
+        Debug.Log("Puntuacion de Colors Magic actualizada: " + Game4Score);
+        UpdateScoreTotal();
+    }
+
+    public void UpdateGame5Score(int newScore)
+    {
+        Game5Score = newScore;
+        Debug.Log("Puntuacion de Vacaciones Zahara actualizada: " + Game5Score);
+        UpdateScoreTotal();
+    }
+
     private void AssignReferences()
     {
         Dictionary<string, Action<TextMeshProUGUI>> uiElements = new Dictionary<string, Action<TextMeshProUGUI>>()
         {
             { "FikiScoreText", (component) => FikiText = component },
             { "JumpingJackScoreText", (component) => JumpingJackText = component },
+            { "FelixJumpScoreText", (component) => FelixJumpText = component },
+            { "ColorsMagicScoreText", (component) => FelixJumpText = component },
+            { "VacacionesZaharaScoreText", (component) => FelixJumpText = component },
             { "TotalScoreText", (component) => TotalScoreText = component }
         };
 
@@ -125,7 +149,15 @@ public class UpdateLobbyScore : MonoBehaviour
         }
         if (FelixJumpText != null)
         {
-            FelixJumpText.text = "FelixJump " + Game3Score;
+            FelixJumpText.text = "FelixJump: " + Game3Score;
+        }
+        if (ColorsMagicText != null)
+        {
+            ColorsMagicText.text = "Colors Magic: " + Game4Score;
+        }
+        if (VacacionesZaharaText != null)
+        {
+            VacacionesZaharaText.text = "Vacaciones Zahara: " + Game5Score;
         }
         if (TotalScoreText != null)
         {
