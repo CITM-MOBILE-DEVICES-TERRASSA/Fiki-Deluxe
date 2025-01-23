@@ -805,8 +805,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 942591626}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: PlayButton
+        m_TargetAssemblyTypeName: LobbyManager, Menu
+        m_MethodName: Fikilevels
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
