@@ -49,6 +49,17 @@ public class LobbyManager : MonoBehaviour
         
         LevelTransitionController.instance.StartTransition(3, 0.5f);
     }
+
+    public void PlayButton2()
+    {
+        
+        LevelTransitionController.instance.StartTransition(12, 0.5f);
+    }
+    public void Fikilevels()
+    {
+        
+        LevelTransitionController.instance.StartTransition(11, 0.5f);
+    }
     public void SelectorButton()
     {
         LevelTransitionController.instance.StartTransition(1, 0.5f);

@@ -44,9 +44,10 @@ public class LevelSelector : MonoBehaviour
         // Implementar l�gica para Minigame6
     }
 
+    
+
     public void Puntuacion()
     {
-        
         if (Puntuacion_Canvas != null)
         {
             Puntuacion_Canvas.SetActive(true);
