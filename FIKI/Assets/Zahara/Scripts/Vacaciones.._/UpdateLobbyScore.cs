@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class UpdateLobbyScore : MonoBehaviour
+public class UpdateLobbyScoreZahara : MonoBehaviour
 {
     public TextMeshProUGUI lobbyScore; 
     
