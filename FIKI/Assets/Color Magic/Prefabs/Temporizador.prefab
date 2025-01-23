@@ -94,6 +94,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeleft: 30
   timeText: {fileID: 5741944165815218254}
-  skipButton: {fileID: 0}
-  entities: []
-  skipButtonFx: {fileID: 0}

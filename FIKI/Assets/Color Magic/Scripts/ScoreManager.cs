@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager
 {
+    public ScoreManagerLevel scoremanager;
     public static ScoreManager instance = new ScoreManager();
 
-    private int score = 0;
+    public int score = 0;
     public UnityEvent<int> OnScoreChanged = new UnityEvent<int>();
 
     private void Awake()
