@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210886369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -892,6 +892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135bc76a3338e6b44b974dfe9615559a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderR: {fileID: 0}
+  sliderG: {fileID: 0}
+  sliderB: {fileID: 0}
+  slideFx: {fileID: 0}
 --- !u!82 &210886373
 AudioSource:
   m_ObjectHideFlags: 0
